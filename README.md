@@ -1,0 +1,1 @@
+This directory contains Addis Bank Managemment System and day 4 practice exersice.
