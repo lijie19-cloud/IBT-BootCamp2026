@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Habesha Eatery</h1>
+      <nav aria-label="Main navigation">
+        <li><a href="Exercise.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </nav>
+    </header>
+    <!-- Contact Section -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact Us</h2>
+
+      <form action="#" method="post">
+        <div>
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="contact-name" required />
+        </div>
+
+        <div>
+          <label for="contact-email">Email</label>
+          <input
+            type="email"
+            id="contact-email"
+            name="contact-email"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="contact-phone">Phone</label>
+          <input type="tel" id="contact-phone" name="contact-phone" />
+        </div>
+
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section id="hours" aria-labelledby="hours-heading">
+      <h2 id="hours-heading">Opening Hours</h2>
+
+      <table>
+        <caption>
+          Habesha Eatery Opening Hours
+        </caption>
+
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Opening Time</th>
+            <th scope="col">Closing Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th scope="row">Monday</th>
+            <td>10:00 AM</td>
+            <td>10:00 PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Tuesday</th>
+            <td>10:00 AM</td>
+            <td>10:00 PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Wednesday</th>
+            <td>10:00 AM</td>
+            <td>10:00 PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Thursday</th>
+            <td>10:00 AM</td>
+            <td>10:00 PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Friday</th>
+            <td>10:00 AM</td>
+            <td>11:00 PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Saturday</th>
+            <td>10:00 AM</td>
+            <td>11:00 PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Sunday</th>
+            <td>12:00 PM</td>
+            <td>9:00 PM</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
