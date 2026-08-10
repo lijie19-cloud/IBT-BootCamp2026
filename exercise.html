@@ -1,0 +1,212 @@
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Practice Exercises</title>
+    <style>
+      /* 1. CSS Custom Properties + Styled Button */
+      :root {
+        --primary-color: #2e7d32;
+        --secondary-color: #f4c430;
+        --spacing: 16px;
+        --font-stack: Arial, Helvetica, sans-serif;
+      }
+      .custom-button {
+        background-color: var(--primary-color);
+        color: white;
+        padding: var(--spacing);
+        font-family: var(--font-stack);
+        border: 2px solid var(--secondary-color);
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      /*2. Box Model: content-box vs border-box*/
+      .content-box {
+        box-sizing: content-box;
+        width: 300px;
+        padding: 24px;
+        border: 2px solid black;
+        margin-bottom: 20px;
+      }
+      .border-box {
+        box-sizing: border-box;
+        width: 300px;
+        padding: 24px;
+        border: 2px solid black;
+      }
+      /*3. CSS Specificity */
+      p {
+        color: blue;
+      }
+      .special-text {
+        color: green;
+      }
+      #important-text {
+        color: red;
+      }
+      /*4. Ethiopian Airlines Schedule Table */
+      .schedule {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .schedule th {
+        background-color: #d71920;
+        color: white;
+        padding: 14px;
+        text-align: left;
+      }
+      .schedule td {
+        padding: 12px;
+        border: 1px solid #ccc;
+      }
+      .schedule tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      /*5. Hex -> RGB + HSL Palette */
+      .palette {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .color-box {
+        width: 150px;
+        padding: 25px 10px;
+        text-align: center;
+        color: white;
+        border-radius: 6px;
+      }
+      .green {
+        background-color: rgb(46, 125, 50);
+      }
+      .green:hover {
+        background-color: hsl(123, 46%, 55%);
+      }
+      .yellow {
+        background-color: rgb(244, 196, 48);
+        color: black;
+      }
+      .yellow:hover {
+        background-color: hsl(45, 90%, 65%);
+      }
+      .red {
+        background-color: rgb(215, 25, 32);
+      }
+      .red:hover {
+        background-color: hsl(358, 79%, 55%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Practice Exercises</h1>
+    <!--1. Custom Propertie-->
+    <section>
+      <h2>1. CSS Custom Properties</h2>
+      <button class="custom-button">Styled Button</button>
+    </section>
+    <!--2. Box Model-->
+    <section>
+      <h2>2. Box Model</h2>
+      <h3>content-box</h3>
+      <div class="content-box">
+        Width = 300px + 48px padding + 4px border =
+        <strong>352px rendered width</strong>
+      </div>
+      <h3>border-box</h3>
+      <div class="border-box">
+        Width = <strong>exactly 300px</strong>, including padding and border.
+      </div>
+    </section>
+    <!--3. Specificity-->
+    <section>
+      <h2>3. CSS Specificity</h2>
+      <p id="important-text" class="special-text">
+        This paragraph is red because the ID selector wins.
+      </p>
+      <p>Specificity:</p>
+      <ul>
+        <li>Element selector <code>p</code> = (0, 0, 0, 1)</li>
+        <li>Class selector <code>.special-text</code> = (0, 0, 1, 0)</li>
+        <li>ID selector <code>#important-text</code> = (0, 1, 0, 0)</li>
+      </ul>
+      <p>
+        Therefore, the ID selector has the highest specificity and its
+        <strong>red</strong> color wins.
+      </p>
+    </section>
+    <!-- 4. Ethiopian Airlines Schedule-->
+    <section>
+      <h2>4. Ethiopian Airlines Schedule</h2>
+      <table class="schedule">
+        <thead>
+          <tr>
+            <th>Flight</th>
+            <th>Destination</th>
+            <th>Departure</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ET 302</td>
+            <td>Nairobi</td>
+            <td>08:00</td>
+            <td>On Time</td>
+          </tr>
+          <tr>
+            <td>ET 500</td>
+            <td>London</td>
+            <td>10:30</td>
+            <td>On Time</td>
+          </tr>
+          <tr>
+            <td>ET 701</td>
+            <td>Dubai</td>
+            <td>13:15</td>
+            <td>Boarding</td>
+          </tr>
+          <tr>
+            <td>ET 908</td>
+            <td>New York</td>
+            <td>16:45</td>
+            <td>Delayed</td>
+          </tr>
+          <tr>
+            <td>ET 927</td>
+            <td>Rome</td>
+            <td>19:20</td>
+            <td>On Time</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <!--5. Color Palette -->
+    <section>
+      <h2>5. Color Palette</h2>
+      <p>Hex colors converted to RGB and HSL:</p>
+      <ul>
+        <li>
+          <strong>#2E7D32</strong>
+          → RGB: rgb(46, 125, 50) → HSL: hsl(123, 46%, 34%)
+        </li>
+
+        <li>
+          <strong>#F4C430</strong>
+          → RGB: rgb(244, 196, 48) → HSL: hsl(45, 90%, 57%)
+        </li>
+        <li>
+          <strong>#D71920</strong>
+          → RGB: rgb(215, 25, 32) → HSL: hsl(358, 79%, 47%)
+        </li>
+      </ul>
+      <p>Hover over the colors to see a lighter shade.</p>
+      <div class="palette">
+        <div class="color-box green">Green</div>
+        <div class="color-box yellow">Yellow</div>
+        <div class="color-box red">Red</div>
+      </div>
+    </section>
+  </body>
+</html>

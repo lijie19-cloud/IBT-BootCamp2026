@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+/*General Styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+/*Header*/
+header {
+  background-color: #3308f3;
+  color: white;
+  text-align: center;
+}
+header h1 {
+  font-size: 2.2rem;
+}
+/*Navigation*/
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+/*Main Content*/
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+section h2 {
+  color: #0a19eb;
+  font-size: 1.8rem;
+}
+/*Reservation Form */
+form {
+  background-color: white;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font: inherit;
+}
+button {
+  background-color: #3308f3;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+/* Menu Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+caption {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: left;
+}
+thead th {
+  background-color: #340aee;
+  color: white;
+}
+tbody th {
+  font-weight: bold;
+  background-color: #f1e9dd;
+}
+tbody tr:nth-child(even) td {
+  background-color: #fafafa;
+}
+/*Media Block */
+.media-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+figure {
+  margin: 0;
+  background-color: white;
+  padding: 1rem;
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+iframe {
+  width: 100%;
+  min-height: 350px;
+}
+/* Color Variables */
+:root {
+  --primary-color: #3308f3;
+  --gold-color: #d4af37;
+  --card-background: #ffffff;
+  --text-color: #222222;
+  --border-color: #cccccc;
+  --stripe-color: #f8f5ef;
+}
+
+/* Menu Card */
+.menu-card {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-top: 6px solid var(--gold-color);
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 20px auto;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+/* Hover pseudo-class */
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu title */
+.menu-card h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+/* Price */
+.menu-card .price {
+  color: var(--gold-color);
+  font-weight: bold;
+}
+
+/* Pseudo-element */
+.menu-card .price::before {
+  content: "ETB ";
+}
+
+/* Ingredient list */
+.menu-card ul {
+  padding-left: 20px;
+}
+
+.menu-card li {
+  padding: 8px;
+}
+/* Zebra stripes */
+.menu-card li:nth-child(even) {
+  background-color: var(--stripe-color);
+}
