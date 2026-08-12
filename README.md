@@ -6,12 +6,6 @@ Project: Day 17 exercises and notes.
 
 This repository contains the code, notes, and exercises completed for Day 17 of the learning series. It includes small scripts, examples, and explanations for the topics covered on this day.
 
-## Contents
-
-- exercises/ - code samples and practice problems
-- notes/ - short notes and references
-- examples/ - runnable example scripts
-
 ## Setup
 
 1. Clone the repo or copy the files to your workspace.
