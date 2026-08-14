@@ -131,5 +131,4 @@ After removing Bread:
 ```
 
 ## Author
-
-Addis Market Shopping List practice project.
+- Lijie19-cloud
