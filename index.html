@@ -11,24 +11,36 @@
   <main class="container">
     <h1>Addis Market Shopping List</h1>
 
-    <form id="item-form">
-      <label for="item-input">Add grocery item</label>
+    <form id="add-form">
+      <div>
+        <label for="name">Item name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="e.g. Tomatoes"
+          required
+        >
+      </div>
 
-      <input
-        type="text"
-        id="item-input"
-        placeholder="e.g. Apples"
-        required
-      >
+      <div>
+        <label for="price">Price (ETB)</label>
+        <input
+          type="number"
+          id="price"
+          placeholder="e.g. 150"
+          min="0"
+          step="0.01"
+          required
+        >
+      </div>
 
       <button type="submit">Add Item</button>
     </form>
-
-    <p id="count">0 items remaining</p>
-
+    <p>
+      Total: <strong id="total">0.00 ETB</strong>
+    </p>
     <ul id="list"></ul>
   </main>
-
   <script src="app.js"></script>
 </body>
 </html>
