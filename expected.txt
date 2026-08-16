@@ -1,0 +1,33 @@
+# EXPECTED BEHAVIOURS
+1. The page contains:
+   - A labelled name input.
+   - A labelled phone input.
+   - A submit button.
+   - A dedicated error area.
+2. Submitting the form does not reload the page.
+3. Input values are trimmed before validation.
+4. An empty name shows:
+   "Enter your full name."
+5. A one-character name shows:
+   "Enter your full name."
+6. A valid name with an invalid phone shows:
+   "Enter a valid Ethiopian phone number."
+7. The phone regex is:
+   /^(?:\+251|0)9\d{8}$/
+8. Valid examples include:
+   0911234567
+   +251911234567
+9. Invalid examples include:
+   0711234567
+   251911234567
+   09112345
+10. A valid name and phone are saved to localStorage.
+11. Saved data is stored as JSON.
+12. Refreshing the page restores previously saved entries.
+13. The number of registered people is displayed after loading.
+14. Multiple valid signups are preserved.
+15. Corrupt localStorage data does not crash the application.
+    The load() function catches the JSON parsing error
+    and returns an empty array.
+16. Error messages are displayed using textContent,
+    not innerHTML.
