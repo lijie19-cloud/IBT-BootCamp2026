@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JavaScript & APIs Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #successBtn {
+            background: green;
+            color: white;
+        }
+
+        #wrongBtn {
+            background: orange;
+            color: white;
+        }
+
+        #notFoundBtn {
+            background: red;
+            color: white;
+        }
+
+        #loadBtn {
+            background: blue;
+            color: white;
+        }
+
+        #status {
+            padding: 15px;
+            margin-top: 15px;
+            background: #eee;
+            border-radius: 5px;
+        }
+
+        .loading {
+            color: blue;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        pre {
+            background: #222;
+            color: white;
+            padding: 15px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Async JavaScript & APIs</h1>
+    <section>
+        <h2>1. USD → ETB Exchange Rate</h2>
+        <button id="rateBtn">
+            Get USD → ETB Rate
+        </button>
+        <p id="rateResult">
+            Click the button to get the exchange rate.
+        </p>
+    </section>
+    
+    <section>
+        <h2>2. Fetch ==> JSON ==> Render</h2>
+        <button id="postBtn">
+            Fetch Post
+        </button>
+        <div id="postResult"></div>
+    </section>
+   
+    <section>
+        <h2>3. Network Error vs HTTP Error</h2>
+        <button id="wrongBtn">
+            Test Wrong URL
+        </button>
+        <button id="notFoundBtn">
+            Test 404 URL
+        </button>
+        <div id="errorResult"></div>
+    </section>
+
+    <section>
+        <h2>4. Promise.all</h2>
+        <button id="parallelBtn">
+            Fetch First Two Posts + Users
+        </button>
+        <div id="parallelResult"></div>
+    </section>
+  
+    <section>
+        <h2>5. Loading / Success / Error</h2>
+        <p>
+            Use the buttons below to see the three states.
+        </p>
+        <button id="successBtn">
+            Success
+        </button>
+        <button id="loadBtn">
+            Loading
+        </button>
+        <button id="errorBtn">
+            Error
+        </button>
+        <div id="status">
+            Ready...
+        </div>
+    </section>
+    <script src="exercise.js"></script>
+</body>
+</html>
