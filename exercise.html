@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="ex.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- Theme toggle -->
+      <div class="top-bar">
+        <h1>Signup</h1>
+        <button id="themeToggle" type="button">🌙 Dark Mode</button>
+      </div>
+      <!-- Signup form -->
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="name"> Name </label>
+          <input type="text" id="name" placeholder="Enter your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone"> Phone </label>
+          <input type="tel" id="phone" placeholder="0911234567" />
+        </div>
+        <!-- Error message -->
+        <p id="error" class="error"></p>
+        <button type="submit">Sign Up</button>
+      </form>
+      <!-- Number of registered people -->
+      <p id="count"></p>
+    </main>
+    <script src="exercise.js"></script>
+  </body>
+</html>
