@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #eff1f3;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  background: #2519cc;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow:1px 6px rgba(8, 8, 7, 0.8);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  background-color: #cbddcf;
+  border: groove 5px green;
+  border-radius:50px;
+  padding: 0.7rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #080808;
+}
+
+#status {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  min-height: 1.2em;
+}
+
+#status.loading {
+  color: #aaec10;
+}
+
+#status.error {
+  color: #d93025;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #050700;
+}
+
+input, select, button {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 4px solid #178526;
+  border-radius: 4px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #016cd6;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  cursor: pointer;
+  background-color: #1f09e9;
+  color: #fff;
+  border: solid 2px;
+  font-weight: 600;
+  transition: background 0.2s;
+  box-shadow: 0 3px #050700;
+}
+
+button:hover {
+  background-color: #00a323;
+}
+
+button#watch {
+  background-color: #1f09e9;
+}
+
+button#watch:hover {
+  background-color: #00a323;
+}
+
+#result {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.75rem;
+  background: #eef6ff;
+  border-radius: 4px;
+  color: #01060c;
+  min-height: 2.5rem;
+}
+
+ul#watchlist {
+  list-style: none;
+}
+
+ul#watchlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  background: #eef6ff;
+  border: 1px solid #eaecee;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+ul#watchlist li.empty {
+  color: #9183a5;
+  font-style: italic;
+  background: transparent;
+  border: none;
+}
+
+ul#watchlist button.rm {
+  background: #d813c8;
+  color: white;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 23px;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+ul#watchlist button.rm:hover {
+  background: #bd2130;
+}
