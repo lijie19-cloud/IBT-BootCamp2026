@@ -6,6 +6,8 @@ The application helps a shop owner manage products, monitor inventory, update st
 
 ---
 
+## Loom video of project demonstration link is provided bellow.
+https://www.loom.com/share/6441267bc4a1467dbfb1e119baade426 
 ## 🚀 Features
 
 - Add new products
@@ -53,5 +55,3 @@ shop-stock-management/
 ├── styles.css
 ├── app.js
 └── README.md
-## Loom video of project demonstration link is provided bellow.
-https://www.loom.com/share/6441267bc4a1467dbfb1e119baade426 
