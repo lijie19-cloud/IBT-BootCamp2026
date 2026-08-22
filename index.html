@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Addis Eats - Authentic Ethiopian food and drinks"
+    />
+
+    <title>Addis Eats Restaurant</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- HEADER -->
+      <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+          <a href="#" class="logo" aria-label="Addis Eats home">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1KB0g7LuetIOfABp3J2t_kr7ka3erXGdDEJE0-Nw2og&s=10"
+              alt="Addis Eats Restaurant logo"
+            />
+          </a>
+
+          <span class="restaurant-label"> Ethiopian Restaurant </span>
+        </nav>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main>
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-content">
+            <p class="eyebrow">AUTHENTIC ETHIOPIAN FLAVOR</p>
+
+            <h1 id="hero-title">Welcome to Addis Eats</h1>
+
+            <p>
+              Discover delicious Ethiopian dishes made with traditional flavors
+              and fresh ingredients.
+            </p>
+          </div>
+        </section>
+
+        <!-- MENU SECTION -->
+        <section class="menu-section" aria-labelledby="menu-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">OUR MENU</p>
+
+              <h2 id="menu-title">Ethiopian Favorites</h2>
+            </div>
+
+            <!-- SEARCH -->
+            <div class="search-box">
+              <label for="search"> Search menu </label>
+
+              <input
+                type="search"
+                id="search"
+                placeholder="Search dishes..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <!-- STATUS -->
+          <div
+            id="status"
+            class="status"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <!-- MENU CONTAINER -->
+          <div id="menu-list" class="menu-grid"></div>
+        </section>
+
+        <!-- CART SECTION -->
+        <section class="cart-section" aria-labelledby="cart-title">
+          <div class="cart-header">
+            <div>
+              <p class="eyebrow">YOUR ORDER</p>
+
+              <h2 id="cart-title">Shopping Cart</h2>
+            </div>
+
+            <span id="cart-count" class="cart-count"> 0 items </span>
+          </div>
+
+          <!-- CART -->
+          <div id="cart-list" class="cart-list" aria-live="polite"></div>
+
+          <!-- TOTAL -->
+          <div class="cart-summary">
+            <span> Total </span>
+
+            <strong id="cart-total"> 0.00 ETB </strong>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        <p>&copy; 2026 Addis Eats Restaurant. Authentic Ethiopian Flavor.</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="menu.json"></script>
+  </body>
+</html>
