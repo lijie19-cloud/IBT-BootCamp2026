@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Stock Management System</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container header-content">
+        <div>
+          <h1>KIYA SUPPER MARKET</h1>
+          <p>Stock Management System</p>
+        </div>
+
+        <button id="clearDataBtn" class="danger-btn">Clear All Data</button>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container">
+      <!-- DASHBOARD-->
+      <section class="dashboard">
+        <div class="stat-card">
+          <h3>Total Products</h3>
+          <p id="totalProducts">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Total Stock</h3>
+          <p id="totalStock">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Low Stock</h3>
+          <p id="lowStock">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Inventory Value</h3>
+          <p id="inventoryValue">0 ETB</p>
+        </div>
+      </section>
+
+      <!-- ADD PRODUCT -->
+      <section class="card">
+        <h2>Add New Product</h2>
+
+        <form id="productForm">
+          <div class="form-grid">
+            <!-- Product Name -->
+            <div class="form-group">
+              <label for="productName"> Product Name </label>
+
+              <input
+                type="text"
+                id="productName"
+                placeholder="e.g. Coca Cola"
+                required
+              />
+            </div>
+
+            <!-- Category -->
+            <div class="form-group">
+              <label for="category"> Category </label>
+
+              <select id="category" required>
+                <option value="">Select category</option>
+
+                <option value="Drinks">Drinks</option>
+
+                <option value="Food">Food</option>
+
+                <option value="Household">Household items</option>
+
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Buying Price -->
+            <div class="form-group">
+              <label for="buyingPrice"> Buying Price (ETB) </label>
+
+              <input
+                type="number"
+                id="buyingPrice"
+                placeholder="0"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+
+            <!-- Selling Price -->
+            <div class="form-group">
+              <label for="sellingPrice"> Selling Price (ETB) </label>
+
+              <input
+                type="number"
+                id="sellingPrice"
+                placeholder="0"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+
+            <!-- Quantity -->
+            <div class="form-group">
+              <label for="quantity"> Quantity </label>
+
+              <input
+                type="number"
+                id="quantity"
+                placeholder="0"
+                min="0"
+                required
+              />
+            </div>
+
+            <!-- Minimum Stock -->
+            <div class="form-group">
+              <label for="minStock"> Minimum Stock </label>
+
+              <input
+                type="number"
+                id="minStock"
+                placeholder="10"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+          <div
+            id="formMessage"
+            class="form-message"
+            role="alert"
+            aria-live="polite"
+          ></div>
+
+          <button type="submit" class="primary-btn">Add Product</button>
+        </form>
+      </section>
+
+      <!-- PRODUCT MANAGEMENT-->
+      <section class="card">
+        <div class="section-header">
+          <div>
+            <h2>Products</h2>
+            <p>Manage your shop inventory</p>
+          </div>
+
+          <div class="filters">
+            <!-- Search -->
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search product..."
+            />
+
+            <!-- Category Filter -->
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+
+              <option value="Drinks">Drinks</option>
+
+              <option value="Food">Food</option>
+
+              <option value="Snacks">Snacks</option>
+
+              <option value="Household">Household</option>
+
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PRODUCT TABLE-->
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Buy Price</th>
+                <th>Sell Price</th>
+                <th>Quantity</th>
+                <th>Min Stock</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="productTableBody">
+              <!-- JavaScript will add products here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty message -->
+
+        <div id="emptyMessage" class="empty-message">
+          <h3>No products found</h3>
+          <p>Add your first product using the form above.</p>
+        </div>
+      </section>
+    </main>
+
+    <!--EDIT PRODUCT MODAL -->
+
+    <div id="editModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edit Product</h2>
+
+          <button id="closeModalBtn" class="close-btn" type="button">×</button>
+        </div>
+
+        <form id="editProductForm">
+          <!-- Hidden product ID -->
+
+          <input type="hidden" id="editProductId" />
+
+          <div class="form-group">
+            <label for="editProductName"> Product Name </label>
+
+            <input type="text" id="editProductName" required />
+          </div>
+
+          <div class="form-group">
+            <label for="editCategory"> Category </label>
+
+            <select id="editCategory" required>
+              <option value="Drinks">Drinks</option>
+
+              <option value="Food">Food</option>
+
+              <option value="Snacks">Snacks</option>
+
+              <option value="Household">Household</option>
+
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editBuyingPrice"> Buying Price (ETB) </label>
+
+            <input
+              type="number"
+              id="editBuyingPrice"
+              min="0"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="editSellingPrice"> Selling Price (ETB) </label>
+
+            <input
+              type="number"
+              id="editSellingPrice"
+              min="0"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="editQuantity"> Quantity </label>
+
+            <input type="number" id="editQuantity" min="0" required />
+          </div>
+
+          <div class="form-group">
+            <label for="editMinStock"> Minimum Stock </label>
+
+            <input type="number" id="editMinStock" min="0" required />
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" id="cancelEditBtn" class="secondary-btn">
+              Cancel
+            </button>
+            <button type="submit" class="primary-btn">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+  </body>
+</html>
