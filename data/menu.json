@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Kitfo",
+    "price": 900,
+    "category": "Beef",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs6TyRLITd35_zQDfAOlss-QQFEW5X9BoXhPuRsGpMcg&s=10",
+    "description": "Traditional minced beef seasoned with Ethiopian spices and clarified butter."
+  },
+  {
+    "id": 2,
+    "name": "Shiro Wot",
+    "price": 280,
+    "category": "Fast Food",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyuwUIYq8zVDMxTLpC8hjgTnRnL3qVUWc5eV2esaudFA&s=10",
+    "description": "Smooth chickpea stew cooked with berbere and traditional Ethiopian spices."
+  },
+  {
+    "id": 3,
+    "name": "Tibs",
+    "price": 1000,
+    "category": "Beef",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrNr0LtLVcloBVQjIFxbzwLI4MGrfNeJDHSTA3I2gOtQ&s=10",
+    "description": "Tender pieces of beef sautéed with onions, peppers and aromatic spices."
+  },
+  {
+    "id": 4,
+    "name": "Vegetarian Firfir",
+    "price": 400,
+    "category": "Vegetarian",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1VZ2ktSNI3wmfVwFbYaRtLZ8c9EcEEJ7OQQuLPVRa3Q&s=10",
+    "description": "Shredded injera mixed with flavorful vegetables and traditional Ethiopian spices."
+  },
+  {
+    "id": 5,
+    "name": "Doro Wot",
+    "price": 1000,
+    "category": "Chicken",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBnomLet0KzUXYk6PqjK8B6RD8Q-7w53xIiYuVy9ZZxw&s=10",
+    "description": "Classic Ethiopian chicken stew prepared with berbere, onions and boiled egg."
+  },
+  {
+    "id": 6,
+    "name": "Vegetarian Combo",
+    "price": 450,
+    "category": "Vegetarian",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSatLczn2b4MNrH1pu6y8x67AC8gJiqUwVdZU_tCH3Zbg&s=10",
+    "description": "A colorful combination of delicious Ethiopian vegetarian dishes served with injera."
+  },
+  {
+    "id": 7,
+    "name": "Gored Gored",
+    "price": 900,
+    "category": "Beef",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxzK7Knw7ar9z_XoF2uWtIMKclmnU3bNUWBWDC3vPX_A&s=10",
+    "description": "Cubed beef tossed with Ethiopian mitmita spice and seasoned butter."
+  },
+  {
+    "id": 8,
+    "name": "Beyaynet",
+    "price": 350,
+    "category": "Vegetarian",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRHTBA0J6dXtTvhDMEo7kFoV9Ey6MRNG78hLtARsEvgnpISqvdNYUCqdo&s=10",
+    "description": "A generous mixed platter featuring several Ethiopian vegetarian specialties."
+  }
+]

@@ -1,0 +1,546 @@
+# 🍽️ ADDIS EATS — Ethiopian Restaurant App
+
+A responsive restaurant web application for **ADDIS EATS**, an Ethiopian restaurant. The app loads menu data from a JSON file, allows customers to search and filter dishes, manage a shopping cart, calculate the total price in Ethiopian Birr (ETB), and complete an order using a validated checkout form.
+
+## 🚀 Features
+
+* 🍛 Ethiopian restaurant menu
+* 📱 Responsive design for mobile and desktop
+* 🖼️ Restaurant logo and hero background image
+* 📦 Menu data loaded from `data/menu.json`
+* ⏳ Loading state while menu data is being fetched
+* ❌ Error handling when menu data cannot be loaded
+* 🔎 Live menu search/filter
+* 🛒 Add items to cart
+* ➕ Increase item quantity
+* ➖ Decrease item quantity
+* 🗑️ Remove items from cart
+* 💰 Live cart total in ETB
+* 🔢 Live cart item count
+* 💾 Cart persistence using `localStorage`
+* 🔄 Cart restored after page reload
+* 📝 Checkout form
+* 👤 Customer name validation
+* 📞 Ethiopian phone/TeleBirr validation using regex
+* 📍 Delivery area selection
+* 🛍️ Empty-cart validation before checkout
+* ✅ Order confirmation message
+
+---
+
+## 📁 Project Structure
+
+```text
+ADDIS-EATS/
+|
+├── index.html
+├── styles.css
+├── app.js
+├── README.md
+│
+├── images/
+│   ├── logo.png
+│   ├── hero.jpg
+│   ├── kitfo.jpg
+│   ├── shiro.jpg
+│   └── tibs.jpg
+│
+└── data/
+    └── menu.json
+```
+
+---
+
+## 🛠️ Technologies Used
+
+* **HTML5** — semantic page structure and accessible forms
+* **CSS3** — responsive layout and styling
+* **JavaScript** — application logic and DOM manipulation
+* **JSON** — restaurant menu data
+* **Fetch API** — loading menu data
+* **localStorage** — saving the shopping cart
+* **Regular Expressions** — Ethiopian phone number validation
+
+---
+
+## 🧠 Application State
+
+The application uses one main `state` object as the single source of truth.
+
+```javascript
+const state = {
+  menu: [],
+  cart: [],
+  search: "",
+  loading: false,
+  error: ""
+};
+```
+
+The UI is generated from this state using the `render()` function.
+
+```text
+User interaction
+      ↓
+Update state
+      ↓
+Save state if necessary
+      ↓
+render()
+      ↓
+Updated UI
+```
+
+This prevents the application from treating the DOM as the source of data.
+
+---
+
+## 🍛 Menu Data
+
+Menu information is stored in:
+
+```text
+data/menu.json
+```
+
+Example:
+
+```json
+{
+  "id": 1,
+  "name": "Kitfo",
+  "price": 700,
+  "category": "Beef",
+  "image": "./images/kitfo.jpg",
+  "description": "Traditional minced beef seasoned with Ethiopian spices."
+}
+```
+
+The application loads the menu using:
+
+```javascript
+const response = await fetch("./data/menu.json");
+```
+
+---
+
+## 🔎 Live Search
+
+Customers can search the menu while typing.
+
+The search value is stored in:
+
+```javascript
+state.search
+```
+
+The menu is filtered based on the dish name, category, and description.
+
+Example:
+
+```text
+Search: Kitfo
+
+        ↓
+
+Kitfo
+```
+
+The page is then re-rendered with the filtered results.
+
+---
+
+## 🛒 Shopping Cart
+
+Customers can:
+
+1. Add a menu item
+2. Increase its quantity
+3. Decrease its quantity
+4. Remove the item
+5. View the total number of items
+6. View the total price
+
+When an item is added, the application updates:
+
+```javascript
+state.cart
+```
+
+Example:
+
+```javascript
+[
+  {
+    id: 1,
+    qty: 2
+  },
+  {
+    id: 3,
+    qty: 1
+  }
+]
+```
+
+---
+
+## 💰 Cart Total
+
+The total is calculated using JavaScript's `reduce()` method.
+
+```javascript
+function calculateTotal() {
+  return state.cart.reduce(
+    (total, cartItem) => {
+
+      const menuItem =
+        findMenuItem(cartItem.id);
+
+      if (!menuItem) {
+        return total;
+      }
+
+      return total +
+        menuItem.price * cartItem.qty;
+
+    },
+    0
+  );
+}
+```
+
+For example:
+
+```text
+Kitfo       700 × 2 = 1,400 ETB
+Tibs      1,220 × 1 = 1,220 ETB
+                      ----------
+Total                 2,620 ETB
+```
+
+---
+
+## 💾 Local Storage
+
+The shopping cart is saved to the browser's local storage.
+
+```javascript
+localStorage.setItem(
+  "addisEatsCart",
+  JSON.stringify(state.cart)
+);
+```
+
+When the application starts, it loads the saved cart:
+
+```javascript
+const savedCart =
+  JSON.parse(
+    localStorage.getItem("addisEatsCart")
+  );
+```
+
+This means the customer's cart remains available after refreshing or reopening the page.
+
+---
+
+## 📝 Checkout Form
+
+The checkout form collects:
+
+* Customer name
+* TeleBirr phone number
+* Delivery area
+
+Example:
+
+```html
+<form id="checkout" novalidate>
+  <label>
+    Name
+    <input id="name" required>
+  </label>
+
+  <label>
+    Phone (TeleBirr)
+    <input id="phone" placeholder="09xxxxxxxx">
+  </label>
+
+  <label>
+    Delivery area
+    <select id="area">
+      <option>Bole</option>
+      <option>Kazanchis</option>
+      <option>Megenagna</option>
+    </select>
+  </label>
+
+  <p id="form-error" class="error"></p>
+
+  <button>Place order</button>
+</form>
+```
+
+---
+
+## 📞 Phone Validation
+
+The application validates Ethiopian phone numbers using:
+
+```javascript
+const ETHIOPIAN_PHONE_REGEX =
+  /^(?:\+251|0)9\d{8}$/;
+```
+
+Valid examples:
+
+```text
+0912345678
++251912345678
+```
+
+Invalid examples:
+
+```text
+123456789
+0812345678
+091234
+```
+
+---
+
+## ✅ Checkout Validation
+
+Before an order can be placed, the application checks:
+
+### 1. Name
+
+The customer must provide a name with at least two characters.
+
+### 2. Phone
+
+The phone number must match the Ethiopian phone regex.
+
+### 3. Cart
+
+The cart cannot be empty.
+
+If all validations pass, the application:
+
+```text
+Validate form
+      ↓
+Calculate total
+      ↓
+Show order confirmation
+      ↓
+Clear cart
+      ↓
+Save empty cart
+      ↓
+Render updated UI
+```
+
+---
+
+## 📍 Delivery Areas
+
+Currently available delivery areas are:
+
+* Bole
+* Kazanchis
+* Megenagna
+
+More areas can easily be added to the `<select>` element.
+
+---
+
+## ▶️ How to Run
+
+Because the project uses:
+
+```javascript
+fetch("./data/menu.json")
+```
+
+run it using a local development server instead of opening `index.html` directly.
+
+### Using VS Code Live Server
+
+1. Open the `ADDIS-EATS` folder in VS Code.
+2. Install the **Live Server** extension if needed.
+3. Right-click `index.html`.
+4. Select **Open with Live Server**.
+5. The application will open in your browser.
+
+---
+
+## 🧪 Testing Checklist
+
+Before submitting the project, test the following:
+
+### Menu
+
+* [x] Menu loads successfully
+* [x] Loading message appears
+* [x] Menu data displays correctly
+* [x] Error state works if the JSON cannot be loaded
+
+### Search
+
+* [x] Search works while typing
+* [x] Matching dishes appear
+* [x] No-result message appears for an unknown dish
+
+### Cart
+
+* [x] Add item works
+* [x] Adding the same item increases quantity
+* [x] `+` increases quantity
+* [x] `−` decreases quantity
+* [x] Quantity reaching zero removes the item
+* [x] Remove button works
+* [x] Total updates correctly
+* [x] Cart count updates correctly
+
+### Persistence
+
+* [x] Add an item
+* [x] Refresh the browser
+* [x] Confirm the cart remains
+
+### Checkout
+
+* [x] Empty name shows an error
+* [x] Short name shows an error
+* [x] Empty phone shows an error
+* [x] Invalid phone shows an error
+* [x] Valid Ethiopian phone is accepted
+* [x] Empty cart cannot be submitted
+* [x] Delivery area is captured
+* [x] Successful order displays confirmation
+* [x] Cart clears after successful checkout
+
+---
+
+## 🔐 Validation Example
+
+The checkout validation follows this pattern:
+
+```javascript
+if (!name) {
+  // show name error
+}
+
+if (!ETHIOPIAN_PHONE_REGEX.test(phone)) {
+  // show phone error
+}
+
+if (state.cart.length === 0) {
+  // show cart error
+}
+```
+
+The form uses:
+
+```html
+novalidate
+```
+
+so that JavaScript controls the validation messages and provides consistent feedback to the customer.
+
+---
+
+## 📱 Responsive Design
+
+The application is designed mobile-first.
+
+The menu uses CSS Grid:
+
+```css
+.menu-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(220px, 1fr)
+    );
+}
+```
+
+This allows menu cards to automatically rearrange based on the available screen width.
+
+The application works on:
+
+* 📱 Mobile phones
+* 📱 Tablets
+* 💻 Laptops
+* 🖥️ Desktop screens
+
+---
+
+## 🎯 Learning Objectives
+
+This project demonstrates several important JavaScript concepts:
+
+* Objects and arrays
+* State management
+* Functions
+* DOM manipulation
+* Event listeners
+* Event delegation
+* `fetch()`
+* `async/await`
+* JSON
+* Array `filter()`
+* Array `find()`
+* Array `reduce()`
+* Form handling
+* Regular expressions
+* `localStorage`
+* `JSON.stringify()`
+* `JSON.parse()`
+* Error handling with `try/catch`
+* Responsive CSS
+* Semantic HTML
+
+---
+
+## 🔮 Future Improvements
+
+Possible future features include:
+
+* Online payment integration
+* Order history
+* Customer accounts
+* Restaurant opening hours
+* Food categories
+* Food ratings and reviews
+* Delivery fee calculation
+* Discount codes
+* Dark mode
+* Backend database
+* Real restaurant API
+* Order tracking
+
+---
+
+## 👨‍🍳 About ADDIS EATS
+
+**ADDIS EATS** is a restaurant web application designed to showcase Ethiopian food and provide a simple online ordering experience.
+
+The project combines traditional Ethiopian food with modern web development.
+
+> **Authentic Ethiopian Flavor 🇪🇹**
+
+---
+
+## 📌 Commit
+
+A suitable commit message for this version is:
+
+```bash
+git add .
+git commit -m "Add checkout form with validation and order flow"
+git push
+```
