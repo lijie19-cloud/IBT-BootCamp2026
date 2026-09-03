@@ -1,0 +1,577 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #faf8f3;
+  color: #0c0600;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e8e2d9;
+}
+
+.site-header .container {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #063be9;
+  color: white;
+
+  font-weight: 800;
+}
+
+.logo h1 {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.logo p {
+  color: #010700;
+  font-size: 0.75rem;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  color: #514a43;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+nav a:hover {
+  color: #8d2f23;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 100px 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1dfc8,
+      #faf8f3
+    );
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+
+  color: #8d2f23;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h2 {
+  max-width: 700px;
+
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  line-height: 1.05;
+
+  margin-bottom: 24px;
+}
+
+.hero-text {
+  max-width: 580px;
+
+  margin-bottom: 32px;
+
+  color: #625b53;
+  font-size: 1.1rem;
+}
+
+.hero-button {
+  display: inline-block;
+
+  padding: 13px 24px;
+
+  border-radius: 8px;
+
+  background: #091ccc;
+  color: white;
+
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu {
+  padding: 80px 0;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  gap: 40px;
+
+  margin-bottom: 40px;
+}
+
+.menu-title h2 {
+  margin-bottom: 8px;
+
+  font-size: 2.5rem;
+}
+
+.menu-title > p:last-child {
+  color: #716a62;
+}
+
+.search-container {
+  min-width: 260px;
+}
+
+.search-container label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.search-container input {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #d8d1c8;
+  border-radius: 8px;
+
+  background: white;
+  outline: none;
+}
+
+.search-container input:focus {
+  border-color: #8d2f23;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(141, 47, 35, 0.1);
+}
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+.category-section {
+  margin-bottom: 32px;
+}
+
+.category-section h3 {
+  margin-bottom: 12px;
+
+  font-size: 1rem;
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-filter button {
+  padding: 9px 18px;
+
+  border: 1px solid #d8d1c8;
+  border-radius: 999px;
+
+  background: white;
+  color: #4d4741;
+
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.category-filter button:hover {
+  border-color: #8d2f23;
+  color: #8d2f23;
+}
+
+.category-filter button.active {
+  border-color: #8d2f23;
+
+  background: #0e2cdb;
+  color: white;
+}
+
+/* =========================
+   DISH GRID
+========================= */
+
+.dish-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(230px, 1fr)
+    );
+
+  gap: 22px;
+}
+
+.dish-card {
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+
+  border: 1px solid #e6dfd6;
+  border-radius: 14px;
+
+  background: white;
+
+  box-shadow:
+    0 8px 25px
+    rgba(50, 40, 30, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 14px 35px
+    rgba(50, 40, 30, 0.1);
+}
+
+.dish-card-content {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-card h3 {
+  font-size: 1.35rem;
+
+  margin-bottom: auto;
+}
+
+.dish-price {
+  margin-top: 20px;
+
+  color: #8d2f23;
+
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.spicy-badge {
+  align-self: flex-start;
+
+  margin-top: 12px;
+
+  padding: 4px 9px;
+
+  border-radius: 999px;
+
+  background: #fff0ed;
+  color: #8d2f23;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.status-message {
+  min-height: 250px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  color: #716a62;
+}
+
+.loader {
+  width: 38px;
+  height: 38px;
+
+  border: 4px solid #e6dfd6;
+  border-top-color: #8d2f23;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error-message {
+  padding: 30px;
+
+  border: 1px solid #e8b8ae;
+  border-radius: 12px;
+
+  background: #fff4f2;
+
+  text-align: center;
+}
+
+.error-message h3 {
+  margin-bottom: 8px;
+
+  color: #8d2f23;
+}
+
+.error-message p {
+  margin-bottom: 20px;
+
+  color: #665b56;
+}
+
+.error-message button {
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #8d2f23;
+  color: white;
+
+  font-weight: 700;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+  padding: 50px 20px;
+
+  border: 1px dashed #d8d1c8;
+  border-radius: 12px;
+
+  color: #756e66;
+
+  text-align: center;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+  padding: 80px 0;
+
+  background: #f0e5d6;
+}
+
+.about h2 {
+  max-width: 700px;
+
+  margin-bottom: 20px;
+
+  font-size: 2.5rem;
+  line-height: 1.15;
+}
+
+.about p:last-child {
+  max-width: 700px;
+
+  color: #625a52;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  padding: 30px 0;
+
+  background: #0e2cdb;
+  color: #ddd5cc;
+}
+
+.site-footer .container {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.site-footer p {
+  font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+  .site-header .container {
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 15px 0;
+  }
+
+  nav {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 70px 0;
+  }
+
+  .menu {
+    padding: 60px 0;
+  }
+
+  .menu-header {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .search-container {
+    min-width: 0;
+  }
+
+  .about {
+    padding: 60px 0;
+  }
+
+  .site-footer .container {
+    flex-direction: column;
+
+    text-align: center;
+  }
+}
+.dish-image-container {
+  width: 100%;
+  height: 190px;
+
+  margin-bottom: 18px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #eee;
+}
+
+.dish-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.dish-card:hover .dish-image {
+  transform: scale(1.05);
+}

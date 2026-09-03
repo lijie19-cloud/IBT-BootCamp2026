@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Kitfo",
+    "price": 700,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaaV7jzMkjffXy4ifz2Pt7z5NYqhb2E0sDo4GZlH47KQ&s=10"
+  },
+  {
+    "id": 2,
+    "name": "Shiro Wot",
+    "price": 280,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8O2-MmayXcdFkKY7hQxpw0f4YKTeU5Hy1raGhyFdnwA&s=10"
+  },
+  {
+    "id": 3,
+    "name": "Vegetarian Firfir",
+    "price": 550,
+    "category": "Vegetarian",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPTHHSj5LKgzlwcJR_SzOrpZsJL5nLy1v9ztIkYo114g&s=10"
+  },
+  {
+    "id": 4,
+    "name": "Tibs",
+    "price": 1220,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJFhvEgcesH1kn2YtJ4e9h4X18eBhrbsmy8_xRG3hQgQ&s=10"
+  },
+  {
+    "id": 5,
+    "name": "Doro Wot",
+    "price": 850,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ14GhptGXovtXFjD2qas6alQscB0OOjdasMQ-eZuozpw&s=10"
+  },
+  {
+    "id": 6,
+    "name": "Gomenr",
+    "price": 600,
+    "category": "Vegetarian",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOdpC_hzoZK52l0fTePK6uUaZZ1OnQ5m7Y750M6L7kfw&s=10"
+  },
+  {
+    "id": 7,
+    "name": "Injera with Alicha",
+    "price": 450,
+    "category": "Vegetarian",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCeP8kHkFrfEgE5tCf1_CcGelsOzxKFfJM7n3rJE2U2w&s=10"
+  },
+  {
+    "id": 8,
+    "name": "Gored Gored",
+    "price": 900,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPEAQwaD53jzcuSvO4e5ff9EaSJqtvS2amVPx-2AvnDg&s=10"
+  },
+  {
+    "id": 9,
+    "name": "Chechebsa",
+    "price": 350,
+    "category": "Breakfast",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8DAI6f52RUIlVOtNZLi2pLGoVLzgg-cOV0X-cJoiVxA&s=10"
+  },
+  {
+    "id": 10,
+    "name": "Ful",
+    "price": 300,
+    "category": "Breakfast",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTuKh3ADWd8WEWEhq8yBcszUsAfD9xQj7_Vj7ufWEojQ&s=10"
+  }
+]
