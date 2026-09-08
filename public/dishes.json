@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Kitfo",
+    "price": 700,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbopAfVSkcvNtTvQ008URk-tsHGOEk-oye_e5VZRvYMA&s=10",
+    "description": "Minced beef seasoned with Ethiopian spices and clarified butter, traditionally served with injera."
+  },
+  {
+    "id": 2,
+    "name": "Shiro Wot",
+    "price": 280,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEPwqw5lhQRYOiJ1LSjyVEXLRaCH5DrQo8GKywJOIINw&s=10",
+    "description": "A delicious Ethiopian stew made from ground chickpeas, berbere spices, and traditional seasonings."
+  },
+  {
+    "id": 3,
+    "name": "Vegetarian Firfir",
+    "price": 550,
+    "category": "Vegetarian",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2NVzL9LUa1XdyxBA0I7fiecIMv6aAlBPWm-ykbsEacg&s=10",
+    "description": "Torn pieces of injera mixed with vegetables, spices, and a flavorful traditional sauce."
+  },
+  {
+    "id": 4,
+    "name": "Tibs",
+    "price": 1220,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-FikZTqUfgRiwCC5FHbldWV9_lgk6-7xM1bZUaL-Lag&s=10",
+    "description": "Tender pieces of meat sautéed with onions, peppers, rosemary, and Ethiopian spices."
+  },
+  {
+    "id": 5,
+    "name": "Doro Wot",
+    "price": 850,
+    "category": "Main",
+    "spicy": true,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXnZcYDGPSTblZF3l9Ih1V1rA3W5Vo6RkEGXwWyh0igw&s=10",
+    "description": "Traditional Ethiopian chicken stew cooked slowly with berbere, onions, butter, and boiled egg."
+  },
+  {
+    "id": 6,
+    "name": "Fasting Platter",
+    "price": 600,
+    "category": "Vegetarian",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG__bGWCkiyJlBdXzgvJ6FK_50aqE-qkWAE0joZYjbiQ&s=10",
+    "description": "A colorful combination of delicious Ethiopian vegetarian dishes served with fresh injera."
+  },
+  {
+    "id": 7,
+    "name": "Injera with Alicha",
+    "price": 450,
+    "category": "Vegetarian",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYN9HC0zAik4VoxAgefzUZz7o-JGJZOEhiHg-kkgJzUg&s=10",
+    "description": "Soft injera served with a mild and flavorful alicha stew made with traditional spices."
+  },
+  {
+    "id": 8,
+    "name": "Gored Gored",
+    "price": 900,
+    "category": "Main",
+    "spicy": true,
+    "image": "/images/gored-gored.jpg",
+    "description": "Tender cubes of beef mixed with Ethiopian spices and seasoned butter."
+  },
+  {
+    "id": 9,
+    "name": "Chechebsa",
+    "price": 350,
+    "category": "Breakfast",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLJR7JvznRby2PZvSc8dEUhU-7UlYQgbAtuR7sxS-wMg&s=10",
+    "description": "Pieces of flatbread tossed with clarified butter, honey, and traditional Ethiopian spices."
+  },
+  {
+    "id": 10,
+    "name": "Ful",
+    "price": 300,
+    "category": "Breakfast",
+    "spicy": false,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjtd_vzE6cEuZr1UAV9pdwkf_qWRB8PyrvOES-wlh8Ag&s=10",
+    "description": "Slow-cooked fava beans served with fresh vegetables, oil, and Ethiopian spices."
+  }
+]
