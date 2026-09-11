@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Wireless Headphones",
+    "price": 2500,
+    "category": "Electronics",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "description": "High-quality wireless headphones with clear sound and comfortable ear cushions."
+  },
+  {
+    "id": 2,
+    "title": "Smartphone Pro",
+    "price": 18500,
+    "category": "Electronics",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+    "description": "A powerful smartphone with a beautiful display and excellent performance."
+  },
+  {
+    "id": 3,
+    "title": "Classic Sneakers",
+    "price": 3200,
+    "category": "Clothing",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    "description": "Comfortable everyday sneakers suitable for casual activities and walking."
+  },
+  {
+    "id": 4,
+    "title": "Leather Backpack",
+    "price": 4500,
+    "category": "Clothing",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+    "description": "Stylish and durable backpack with plenty of space for everyday essentials."
+  },
+  {
+    "id": 5,
+    "title": "Luxury Perfume",
+    "price": 2800,
+    "category": "Beauty",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601",
+    "description": "Elegant fragrance with a long-lasting and refreshing scent."
+  },
+  {
+    "id": 6,
+    "title": "Smart Watch",
+    "price": 6500,
+    "category": "Electronics",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+    "description": "Modern smartwatch for tracking activity, notifications, and daily routines."
+  },
+  {
+    "id": 7,
+    "title": "Sunglasses",
+    "price": 1800,
+    "category": "Clothing",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+    "description": "Modern sunglasses with a stylish design for everyday use."
+  },
+  {
+    "id": 8,
+    "title": "Face Care Set",
+    "price": 2200,
+    "category": "Beauty",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883",
+    "description": "Complete face care set designed for a simple daily skincare routine."
+  }
+]
