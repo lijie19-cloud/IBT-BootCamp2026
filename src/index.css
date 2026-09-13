@@ -1058,3 +1058,135 @@ textarea {
     transform: none;
   }
 }
+/* ================================
+   RESOURCE CONTROLS
+================================ */
+
+.resource-controls {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ================================
+   RESOURCE GRID
+================================ */
+
+.resource-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(260px, 1fr)
+  );
+  gap: 1.5rem;
+}
+
+/* ================================
+   RESOURCE CARD
+================================ */
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================
+   RESOURCE ICON
+================================ */
+
+.resource-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  margin: 1.25rem 1.25rem 0;
+  border-radius: 1rem;
+  background: #e0ecff;
+  font-size: 2rem;
+}
+
+/* ================================
+   RESOURCE CONTENT
+================================ */
+
+.resource-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.resource-category {
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #f0fdf4;
+  color: #166534;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.resource-card h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.resource-card p {
+  margin-bottom: 1.25rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ================================
+   RESOURCE LINK
+================================ */
+
+.resource-link {
+  margin-top: auto;
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.resource-link:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (min-width: 768px) {
+  .resource-controls {
+    grid-template-columns: 2fr 1fr;
+    align-items: end;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .resource-card {
+    transition: none;
+  }
+
+  .resource-card:hover {
+    transform: none;
+  }
+}
