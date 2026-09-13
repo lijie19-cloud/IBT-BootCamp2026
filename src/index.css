@@ -2379,3 +2379,195 @@ textarea {
     transform: none;
   }
 }
+/* ========================================
+   404 PAGE
+======================================== */
+
+.not-found-page {
+  min-height: calc(100vh - 72px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 80px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eff6ff
+    );
+}
+
+.not-found-content {
+  width: min(700px, 100%);
+
+  text-align: center;
+}
+
+.not-found-code {
+  margin-bottom: 10px;
+
+  font-size: clamp(
+    6rem,
+    20vw,
+    11rem
+  );
+
+  line-height: 0.9;
+
+  font-weight: 900;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1e3a8a
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.not-found-content .section-label {
+  margin-bottom: 15px;
+}
+
+.not-found-content h1 {
+  margin: 0 0 18px;
+
+  font-size: clamp(
+    2rem,
+    5vw,
+    3.2rem
+  );
+
+  line-height: 1.2;
+}
+
+.not-found-content p {
+  max-width: 600px;
+
+  margin: 0 auto 30px;
+
+  color: #64748b;
+
+  font-size: 1.05rem;
+
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   404 BUTTONS
+======================================== */
+
+.not-found-actions {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex-wrap: wrap;
+}
+
+.not-found-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 160px;
+
+  padding: 13px 22px;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.not-found-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(37, 99, 235, 0.2);
+}
+
+.not-found-button.secondary {
+  background: white;
+
+  color: #2563eb;
+
+  border: 1px solid #bfdbfe;
+}
+
+.not-found-button.secondary:hover {
+  background: #eff6ff;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+  .not-found-page {
+    min-height: calc(100vh - 65px);
+
+    padding: 60px 20px;
+  }
+
+  .not-found-content h1 {
+    font-size: 2rem;
+  }
+
+  .not-found-content p {
+    font-size: 1rem;
+  }
+
+  .not-found-actions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .not-found-button {
+    width: 100%;
+
+    max-width: 280px;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-button {
+    transition: none;
+  }
+
+  .not-found-button:hover {
+    transform: none;
+  }
+}
