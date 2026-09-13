@@ -664,3 +664,161 @@ textarea {
     transform: none;
   }
 }
+/* ================================
+   EVENT CONTROLS
+================================ */
+
+.event-controls {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ================================
+   EVENT GRID
+================================ */
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  );
+  gap: 1.5rem;
+}
+
+/* ================================
+   EVENT CARD
+================================ */
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================
+   EVENT IMAGE
+================================ */
+
+.event-image-container {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image {
+  transform: scale(1.05);
+}
+
+/* ================================
+   EVENT CONTENT
+================================ */
+
+.event-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem;
+}
+
+.event-category {
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #e0ecff;
+  color: #1d4ed8;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.event-card h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+/* ================================
+   EVENT DATE
+================================ */
+
+.event-date {
+  margin-bottom: 0.75rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.5rem;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.event-info {
+  margin-bottom: 1rem;
+}
+
+.event-info p {
+  margin-bottom: 0.4rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.event-description {
+  margin-bottom: 1.25rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ================================
+   EVENT BUTTON
+================================ */
+
+.event-card .details-button {
+  margin-top: auto;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (min-width: 768px) {
+  .event-controls {
+    grid-template-columns: 2fr 1fr;
+    align-items: end;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card,
+  .event-image {
+    transition: none;
+  }
+
+  .event-card:hover {
+    transform: none;
+  }
+
+  .event-card:hover .event-image {
+    transform: none;
+  }
+}

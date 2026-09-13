@@ -85,7 +85,7 @@
     "location": "Computer Lab 2",
     "description": "A hands-on workshop introducing students to modern web development using HTML, CSS, JavaScript, and React.",
     "category": "Technology",
-    "image": "/images/events/web-workshop.jpg",
+    "image": "/images/events/coding-workshop.jpg",
     "organizer": "Tech Innovators Club",
     "registration": "Registration required",
     "requirements": ["Laptop", "Basic HTML knowledge"]
@@ -98,7 +98,7 @@
     "location": "Lecture Hall A",
     "description": "Students compete in speeches and presentations while developing confidence and communication skills.",
     "category": "Academic",
-    "image": "/images/events/public-speaking.jpg",
+    "image": "/images/events/speaking.jpg",
     "organizer": "Debate and Public Speaking Club",
     "registration": "Participant registration required",
     "requirements": ["Student ID"]
