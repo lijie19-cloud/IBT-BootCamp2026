@@ -822,3 +822,239 @@ textarea {
     transform: none;
   }
 }
+/* ================================
+   EVENT DETAILS
+================================ */
+
+.event-details {
+  display: grid;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.event-details-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 0.8rem;
+}
+
+.event-details-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.event-details-content h1 {
+  margin: 0.75rem 0 1rem;
+  font-size: 2rem;
+}
+
+.event-full-description {
+  margin-bottom: 1.5rem;
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* ================================
+   EVENT DETAILS GRID
+================================ */
+
+.event-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ================================
+   REGISTRATION INFORMATION
+================================ */
+
+.registration-info,
+.requirements-section {
+  margin-bottom: 1.5rem;
+}
+
+.registration-info h2,
+.requirements-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.registration-info p,
+.requirements-section p {
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.requirements-section ul {
+  padding-left: 1.25rem;
+}
+
+.requirements-section li {
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+}
+
+/* ================================
+   REGISTRATION SECTION
+================================ */
+
+.registration-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.registration-header {
+  margin-bottom: 1.5rem;
+}
+
+.registration-header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.registration-header p {
+  color: #6b7280;
+}
+
+/* ================================
+   REGISTRATION FORM
+================================ */
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  color: #111827;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-group input[readonly] {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+/* ================================
+   FORM ERROR
+================================ */
+
+.form-error {
+  padding: 1rem;
+  border: 1px solid #fca5a5;
+  border-radius: 0.6rem;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* ================================
+   REGISTER BUTTON
+================================ */
+
+.register-button {
+  padding: 0.85rem 1.25rem;
+  border: none;
+  border-radius: 0.6rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.register-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (min-width: 768px) {
+  .event-details {
+    grid-template-columns: 1fr 1.2fr;
+    padding: 2rem;
+  }
+
+  .event-details-image {
+    height: 100%;
+    min-height: 450px;
+  }
+
+  .event-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .registration-section {
+    padding: 2rem;
+  }
+}
+
+/* ================================
+   DESKTOP
+================================ */
+
+@media (min-width: 1024px) {
+  .event-details {
+    padding: 2.5rem;
+  }
+
+  .event-details-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .registration-section {
+    padding: 2.5rem;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .register-button {
+    transition: none;
+  }
+
+  .register-button:hover {
+    transform: none;
+  }
+}
