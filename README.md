@@ -14,31 +14,31 @@ ShopSphere provides a responsive and user-friendly shopping experience across de
 
 The home page introduces ShopSphere and provides quick access to featured products, product categories, promotions, and the main navigation.
 
-![ShopSphere Home Page](./screenshots/home-page.png)
+![ShopSphere Home Page]([./screenshots/home-page.png](https://shopsphereonlineshopping-app.netlify.app/))
 
 ### 🛍️ Products Page
 
 Users can browse all available products, search for products, filter products by category, and sort products by price or name.
 
-![ShopSphere Products Page](./screenshots/products-page.png)
+![ShopSphere Products Page]([./screenshots/products-page.png](https://shopsphereonlineshopping-app.netlify.app/products))
 
 ### 📦 Product Details
 
 The product details page displays complete product information, including the product image, price, rating, description, quantity selector, related products, and Add to Cart functionality.
 
-![ShopSphere Product Details](./screenshots/product-details.png)
+![ShopSphere Product Details]([./screenshots/product-details.png](https://shopsphereonlineshopping-app.netlify.app/products/1))
 
 ### 🛒 Shopping Cart
 
 The cart allows users to manage product quantities, remove products, view the subtotal, and proceed to checkout.
 
-![ShopSphere Shopping Cart](./screenshots/cart-page.png)
+![ShopSphere Shopping Cart]([./screenshots/cart-page.png](https://shopsphereonlineshopping-app.netlify.app/cart))
 
 ### 💳 Checkout
 
 The checkout page provides customer information fields, delivery information, order summary, delivery fee, and the final order total.
 
-![ShopSphere Checkout](./screenshots/checkout-page.png)
+![ShopSphere Checkout]([./screenshots/checkout-page.png](https://shopsphereonlineshopping-app.netlify.app/checkout))
 
 ### 📱 Responsive Design
 
