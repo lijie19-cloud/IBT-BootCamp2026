@@ -9,7 +9,7 @@ The project demonstrates how React can be used to build a modern e-commerce appl
 ## 🖥️ Project Preview
 
 ShopSphere provides a responsive and user-friendly shopping experience across desktop, tablet, and mobile devices.
-
+![ShopSphere online shopping app link]([[[./screenshots/home-page.png](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7nhZqD9GD06HDQsHcVYJ4Jar-tF1E3z9ySIRKEJQdbQ&s=10)](https://shopsphereonlineshopping-app.netlify.app](https://shopsphereonlineshopping-app.netlify.app/)/))
 ### 🏠 Home Page
 
 The home page introduces ShopSphere and provides quick access to featured products, product categories, promotions, and the main navigation.
