@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Digital Library",
+    "category": "Library",
+    "description": "Access online books, journals, research papers, and academic databases.",
+    "icon": "📚",
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "title": "Research Databases",
+    "category": "Library",
+    "description": "Find academic articles, research publications, and reliable study materials.",
+    "icon": "🔎",
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "title": "Study Rooms",
+    "category": "Library",
+    "description": "Reserve quiet study spaces for individual or group study sessions.",
+    "icon": "📝",
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "title": "Academic Tutoring",
+    "category": "Academic Support",
+    "description": "Get additional academic support from tutors and experienced students.",
+    "icon": "🎓",
+    "link": "#"
+  },
+  {
+    "id": 5,
+    "title": "Writing Center",
+    "category": "Academic Support",
+    "description": "Improve essays, reports, research papers, and other academic writing.",
+    "icon": "✍️",
+    "link": "#"
+  },
+  {
+    "id": 6,
+    "title": "Career Counseling",
+    "category": "Career Services",
+    "description": "Get professional guidance about careers, internships, and employment opportunities.",
+    "icon": "💼",
+    "link": "#"
+  },
+  {
+    "id": 7,
+    "title": "Resume Support",
+    "category": "Career Services",
+    "description": "Learn how to create a professional resume and prepare for job interviews.",
+    "icon": "📄",
+    "link": "#"
+  },
+  {
+    "id": 8,
+    "title": "Student ID Services",
+    "category": "Student Services",
+    "description": "Get assistance with student identification cards and related services.",
+    "icon": "🪪",
+    "link": "#"
+  },
+  {
+    "id": 9,
+    "title": "Financial Aid",
+    "category": "Student Services",
+    "description": "Find information about financial assistance, scholarships, and student support.",
+    "icon": "💰",
+    "link": "#"
+  },
+  {
+    "id": 10,
+    "title": "Student Support Center",
+    "category": "Student Services",
+    "description": "Find guidance and support for common student needs and campus services.",
+    "icon": "🤝",
+    "link": "#"
+  }
+]

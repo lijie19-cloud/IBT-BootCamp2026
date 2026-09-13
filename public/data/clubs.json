@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Tech Innovators Club",
+    "description": "A community for students interested in programming, technology, artificial intelligence, and innovation.",
+    "category": "Technology",
+    "image": "/images/clubs/tech.jpg",
+    "meetingDay": "Wednesday",
+    "meetingTime": "4:00 PM",
+    "location": "Innovation Lab",
+    "members": 85,
+    "interests": ["Programming", "AI", "Web Development"]
+  },
+  {
+    "id": 2,
+    "name": "Campus Football Club",
+    "description": "A friendly community for students who enjoy football, fitness, teamwork, and competition.",
+    "category": "Sports",
+    "image": "/images/clubs/football.jpg",
+    "meetingDay": "Saturday",
+    "meetingTime": "9:00 AM",
+    "location": "Campus Sports Field",
+    "members": 120,
+    "interests": ["Football", "Fitness", "Teamwork"]
+  },
+  {
+    "id": 3,
+    "name": "Creative Arts Society",
+    "description": "A creative space where students can explore painting, drawing, photography, and visual arts.",
+    "category": "Arts",
+    "image": "/images/clubs/arts.jpg",
+    "meetingDay": "Thursday",
+    "meetingTime": "3:30 PM",
+    "location": "Arts Building",
+    "members": 65,
+    "interests": ["Painting", "Drawing", "Photography"]
+  },
+  {
+    "id": 4,
+    "name": "Entrepreneurs Club",
+    "description": "Students interested in startups, entrepreneurship, business ideas, and innovation come together to learn and collaborate.",
+    "category": "Business",
+    "image": "/images/clubs/business.jpg",
+    "meetingDay": "Monday",
+    "meetingTime": "5:00 PM",
+    "location": "Business Hall",
+    "members": 72,
+    "interests": ["Startups", "Business", "Leadership"]
+  },
+  {
+    "id": 5,
+    "name": "Science Discovery Club",
+    "description": "A club for students who enjoy scientific research, experiments, discovery, and academic discussions.",
+    "category": "Academic",
+    "image": "/images/clubs/science.jpg",
+    "meetingDay": "Tuesday",
+    "meetingTime": "4:30 PM",
+    "location": "Science Laboratory",
+    "members": 58,
+    "interests": ["Science", "Research", "Experiments"]
+  },
+  {
+    "id": 6,
+    "name": "Cultural Exchange Club",
+    "description": "A diverse student community celebrating cultures, traditions, languages, food, and friendship.",
+    "category": "Culture",
+    "image": "/images/clubs/culture.jpg",
+    "meetingDay": "Friday",
+    "meetingTime": "4:00 PM",
+    "location": "Student Center",
+    "members": 95,
+    "interests": ["Culture", "Languages", "Traditions"]
+  },
+  {
+    "id": 7,
+    "name": "Music and Performance Club",
+    "description": "A community for students interested in singing, musical instruments, drama, and stage performance.",
+    "category": "Arts",
+    "image": "/images/clubs/music.jpg",
+    "meetingDay": "Wednesday",
+    "meetingTime": "5:30 PM",
+    "location": "Performance Hall",
+    "members": 78,
+    "interests": ["Music", "Singing", "Drama"]
+  },
+  {
+    "id": 8,
+    "name": "Debate and Public Speaking Club",
+    "description": "Develop communication, critical thinking, confidence, and public speaking skills through debates and discussions.",
+    "category": "Academic",
+    "image": "/images/clubs/debate.jpg",
+    "meetingDay": "Thursday",
+    "meetingTime": "5:00 PM",
+    "location": "Lecture Hall B",
+    "members": 62,
+    "interests": ["Debate", "Public Speaking", "Leadership"]
+  },
+  {
+    "id": 9,
+    "name": "Community Service Club",
+    "description": "Students working together to organize volunteer activities and make a positive impact in the community.",
+    "category": "Social",
+    "image": "/images/clubs/community.jpg",
+    "meetingDay": "Saturday",
+    "meetingTime": "2:00 PM",
+    "location": "Student Center",
+    "members": 110,
+    "interests": ["Volunteering", "Community", "Social Impact"]
+  },
+  {
+    "id": 10,
+    "name": "Photography Club",
+    "description": "Learn photography techniques, explore campus through a camera, and share creative work with other students.",
+    "category": "Arts",
+    "image": "/images/clubs/photography.jpg",
+    "meetingDay": "Sunday",
+    "meetingTime": "10:00 AM",
+    "location": "Media Center",
+    "members": 47,
+    "interests": ["Photography", "Editing", "Creativity"]
+  }
+]
