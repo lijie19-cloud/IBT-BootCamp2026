@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
 import { useNavigate, useParams } from "react-router-dom";
+
 import { loadEvents } from "../api/api";
+
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 
@@ -12,46 +15,52 @@ function EventDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Registration form state
   const [formData, setFormData] = useState({
     studentName: "",
     email: "",
     studentId: "",
   });
 
-  const [formError, setFormError] = useState("");
+  const [formErrors, setFormErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
-  useEffect(() => {
-    async function fetchEvent() {
-      try {
-        setLoading(true);
-        setError("");
+  /* =========================================
+     FETCH EVENT
+  ========================================= */
 
-        const events = await loadEvents();
+  const fetchEvent = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
 
-        const selectedEvent = events.find(
-          (event) => String(event.id) === String(id),
-        );
+      const events = await loadEvents();
 
-        if (!selectedEvent) {
-          setError("Event not found.");
-          setEvent(null);
-          return;
-        }
+      const selectedEvent = events.find(
+        (event) => String(event.id) === String(id),
+      );
 
-        setEvent(selectedEvent);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+      if (!selectedEvent) {
+        setError("Event not found.");
+        setEvent(null);
+        return;
       }
-    }
 
-    fetchEvent();
+      setEvent(selectedEvent);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   }, [id]);
 
-  // Handle form input changes
+  useEffect(() => {
+    fetchEvent();
+  }, [fetchEvent]);
+
+  /* =========================================
+     HANDLE INPUT CHANGES
+  ========================================= */
+
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -60,55 +69,135 @@ function EventDetails() {
       [name]: value,
     }));
 
-    // Clear messages while the user is editing
-    setFormError("");
+    // Remove the error for the field
+    // while the user is correcting it.
+    setFormErrors((currentErrors) => ({
+      ...currentErrors,
+      [name]: "",
+    }));
+
+    // Remove old success message
+    // when the user starts another registration.
     setSuccessMessage("");
   }
 
-  // Handle registration
-  function handleSubmit(event) {
-    event.preventDefault();
+  /* =========================================
+     VALIDATE FORM
+  ========================================= */
 
-    setFormError("");
-    setSuccessMessage("");
+  function validateForm() {
+    const errors = {};
 
-    const studentName = formData.studentName.trim();
+    const name = formData.studentName.trim();
     const email = formData.email.trim();
     const studentId = formData.studentId.trim();
 
-    if (!studentName || !email || !studentId) {
-      setFormError("Please fill in all fields.");
+    /* ---------- STUDENT NAME ---------- */
+
+    if (!name) {
+      errors.studentName = "Student name is required.";
+    } else if (name.length < 2) {
+      errors.studentName = "Student name must contain at least 2 characters.";
+    } else if (name.length > 50) {
+      errors.studentName = "Student name must not exceed 50 characters.";
+    } else if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/.test(name)) {
+      errors.studentName =
+        "Student name can only contain letters, spaces, apostrophes, and hyphens.";
+    }
+
+    /* ---------- EMAIL ---------- */
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) {
+      errors.email = "Email address is required.";
+    } else if (!emailPattern.test(email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+
+    /* ---------- STUDENT ID ---------- */
+
+    const studentIdPattern = /^[A-Za-z0-9-]+$/;
+
+    if (!studentId) {
+      errors.studentId = "Student ID is required.";
+    } else if (studentId.length < 3) {
+      errors.studentId = "Student ID must contain at least 3 characters.";
+    } else if (studentId.length > 20) {
+      errors.studentId = "Student ID must not exceed 20 characters.";
+    } else if (!studentIdPattern.test(studentId)) {
+      errors.studentId =
+        "Student ID can only contain letters, numbers, and hyphens.";
+    }
+
+    return errors;
+  }
+
+  /* =========================================
+     HANDLE FORM SUBMISSION
+  ========================================= */
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    setSuccessMessage("");
+
+    const errors = validateForm();
+
+    setFormErrors(errors);
+
+    // Stop submission if validation fails.
+    if (Object.keys(errors).length > 0) {
       return;
     }
 
-    if (!email.includes("@")) {
-      setFormError("Please enter a valid email address.");
-      return;
-    }
+    /* =======================================
+       SUCCESS
+    ======================================= */
 
-    if (studentId.length < 3) {
-      setFormError("Please enter a valid student ID.");
-      return;
-    }
+    setSuccessMessage(
+      `Registration successful! You are registered for "${eventDataName()}".`,
+    );
 
-    setSuccessMessage(`You have successfully registered for ${event.name}!`);
-
-    // Clear the form
+    // Reset form after successful submission.
     setFormData({
       studentName: "",
       email: "",
       studentId: "",
     });
+
+    setFormErrors({});
+
+    // Move focus to success message.
+    setTimeout(() => {
+      document.getElementById("registration-success")?.focus();
+    }, 0);
   }
+
+  /* =========================================
+     GET EVENT NAME SAFELY
+  ========================================= */
+
+  function eventDataName() {
+    return event?.name || "this event";
+  }
+
+  /* =========================================
+     LOADING STATE
+  ========================================= */
 
   if (loading) {
     return <Loading message="Loading event details..." />;
   }
 
+  /* =========================================
+     ERROR STATE
+  ========================================= */
+
   if (error) {
     return (
       <section className="page-section">
-        <ErrorMessage message={error} />
+        <ErrorMessage message={error} onRetry={fetchEvent} />
 
         <button
           type="button"
@@ -125,9 +214,12 @@ function EventDetails() {
     return null;
   }
 
+  /* =========================================
+     RENDER EVENT DETAILS
+  ========================================= */
+
   return (
-    <section className="page-section">
-      {/* Back button */}
+    <main className="page-section">
       <button
         type="button"
         className="back-button"
@@ -136,18 +228,25 @@ function EventDetails() {
         ← Back to Events
       </button>
 
-      {/* Event information */}
       <article className="event-details">
+        {/* =====================================
+            EVENT IMAGE
+        ===================================== */}
+
         <div className="event-details-image">
           <img src={event.image} alt={event.name} />
         </div>
+
+        {/* =====================================
+            EVENT INFORMATION
+        ===================================== */}
 
         <div className="event-details-content">
           <span className="event-category">{event.category}</span>
 
           <h1>{event.name}</h1>
 
-          <p className="event-full-description">{event.description}</p>
+          <p className="event-details-description">{event.description}</p>
 
           <div className="event-details-grid">
             <div className="detail-item">
@@ -171,108 +270,226 @@ function EventDetails() {
             </div>
           </div>
 
-          {/* Registration information */}
-          <div className="registration-info">
+          {/* =====================================
+              REGISTRATION INFORMATION
+          ===================================== */}
+
+          <section className="registration-info">
             <h2>Registration Information</h2>
 
-            <p>{event.registration}</p>
-          </div>
+            <p>
+              <strong>Registration:</strong> {event.registration}
+            </p>
 
-          {/* Requirements */}
-          <div className="requirements-section">
-            <h2>Requirements</h2>
+            <h3>Requirements</h3>
 
-            {event.requirements && event.requirements.length > 0 ? (
-              <ul>
-                {event.requirements.map((requirement) => (
-                  <li key={requirement}>{requirement}</li>
-                ))}
-              </ul>
-            ) : (
-              <p>No special requirements are listed for this event.</p>
+            <ul>
+              {event.requirements.map((requirement) => (
+                <li key={requirement}>{requirement}</li>
+              ))}
+            </ul>
+          </section>
+
+          {/* =====================================
+              REGISTRATION FORM
+          ===================================== */}
+
+          <section className="registration-section">
+            <div className="registration-header">
+              <h2>Register for This Event</h2>
+
+              <p>Complete the form below to register for this event.</p>
+            </div>
+
+            {/* ===================================
+                SUCCESS MESSAGE
+            =================================== */}
+
+            {successMessage && (
+              <div
+                id="registration-success"
+                className="registration-success"
+                role="status"
+                aria-live="polite"
+                tabIndex="-1"
+              >
+                <span className="success-icon" aria-hidden="true">
+                  ✓
+                </span>
+
+                <div>
+                  <strong>Registration Complete</strong>
+
+                  <p>{successMessage}</p>
+                </div>
+              </div>
             )}
-          </div>
+
+            <form
+              className="registration-form"
+              onSubmit={handleSubmit}
+              noValidate
+            >
+              {/* ================================
+                  STUDENT NAME
+              ================================= */}
+
+              <div className="form-group">
+                <label htmlFor="studentName">
+                  Student Name
+                  <span className="required-mark" aria-hidden="true">
+                    *
+                  </span>
+                </label>
+
+                <input
+                  id="studentName"
+                  name="studentName"
+                  type="text"
+                  value={formData.studentName}
+                  onChange={handleChange}
+                  placeholder="Enter your full name"
+                  autoComplete="name"
+                  aria-invalid={Boolean(formErrors.studentName)}
+                  aria-describedby={
+                    formErrors.studentName
+                      ? "studentName-error"
+                      : "studentName-help"
+                  }
+                />
+
+                <small id="studentName-help">Enter your full name.</small>
+
+                {formErrors.studentName && (
+                  <p
+                    id="studentName-error"
+                    className="field-error"
+                    role="alert"
+                  >
+                    {formErrors.studentName}
+                  </p>
+                )}
+              </div>
+
+              {/* ================================
+                  EMAIL
+              ================================= */}
+
+              <div className="form-group">
+                <label htmlFor="email">
+                  Email Address
+                  <span className="required-mark" aria-hidden="true">
+                    *
+                  </span>
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="student@example.com"
+                  autoComplete="email"
+                  aria-invalid={Boolean(formErrors.email)}
+                  aria-describedby={
+                    formErrors.email ? "email-error" : "email-help"
+                  }
+                />
+
+                <small id="email-help">Enter a valid email address.</small>
+
+                {formErrors.email && (
+                  <p id="email-error" className="field-error" role="alert">
+                    {formErrors.email}
+                  </p>
+                )}
+              </div>
+
+              {/* ================================
+                  STUDENT ID
+              ================================= */}
+
+              <div className="form-group">
+                <label htmlFor="studentId">
+                  Student ID
+                  <span className="required-mark" aria-hidden="true">
+                    *
+                  </span>
+                </label>
+
+                <input
+                  id="studentId"
+                  name="studentId"
+                  type="text"
+                  value={formData.studentId}
+                  onChange={handleChange}
+                  placeholder="Enter your student ID"
+                  autoComplete="off"
+                  aria-invalid={Boolean(formErrors.studentId)}
+                  aria-describedby={
+                    formErrors.studentId ? "studentId-error" : "studentId-help"
+                  }
+                />
+
+                <small id="studentId-help">
+                  Use letters, numbers, and hyphens.
+                </small>
+
+                {formErrors.studentId && (
+                  <p id="studentId-error" className="field-error" role="alert">
+                    {formErrors.studentId}
+                  </p>
+                )}
+              </div>
+
+              {/* ================================
+                  EVENT
+              ================================= */}
+
+              <div className="form-group">
+                <label htmlFor="event">Event</label>
+
+                <input
+                  id="event"
+                  type="text"
+                  value={event.name}
+                  readOnly
+                  className="readonly-input"
+                />
+              </div>
+
+              {/* ================================
+                  FORM ACTIONS
+              ================================= */}
+
+              <div className="form-actions">
+                <button type="submit" className="register-button">
+                  Register for Event
+                </button>
+
+                <button
+                  type="button"
+                  className="reset-button"
+                  onClick={() => {
+                    setFormData({
+                      studentName: "",
+                      email: "",
+                      studentId: "",
+                    });
+
+                    setFormErrors({});
+                    setSuccessMessage("");
+                  }}
+                >
+                  Clear Form
+                </button>
+              </div>
+            </form>
+          </section>
         </div>
       </article>
-
-      {/* Registration form */}
-      <section className="registration-section">
-        <div className="registration-header">
-          <h2>Register for this Event</h2>
-
-          <p>Complete the form below to register your participation.</p>
-        </div>
-
-        <form className="registration-form" onSubmit={handleSubmit}>
-          {/* Student name */}
-          <div className="form-group">
-            <label htmlFor="studentName">Student Name</label>
-
-            <input
-              id="studentName"
-              name="studentName"
-              type="text"
-              value={formData.studentName}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-            />
-          </div>
-
-          {/* Email */}
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="student@example.com"
-            />
-          </div>
-
-          {/* Student ID */}
-          <div className="form-group">
-            <label htmlFor="studentId">Student ID</label>
-
-            <input
-              id="studentId"
-              name="studentId"
-              type="text"
-              value={formData.studentId}
-              onChange={handleChange}
-              placeholder="Enter your student ID"
-            />
-          </div>
-
-          {/* Selected event */}
-          <div className="form-group">
-            <label htmlFor="selectedEvent">Event</label>
-
-            <input id="selectedEvent" type="text" value={event.name} readOnly />
-          </div>
-
-          {/* Error */}
-          {formError && (
-            <div className="form-error" role="alert">
-              {formError}
-            </div>
-          )}
-
-          {/* Success */}
-          {successMessage && (
-            <div className="success-message" role="status">
-              {successMessage}
-            </div>
-          )}
-
-          <button type="submit" className="register-button">
-            Register for Event
-          </button>
-        </form>
-      </section>
-    </section>
+    </main>
   );
 }
 

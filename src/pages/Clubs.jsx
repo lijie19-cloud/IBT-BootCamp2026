@@ -1,49 +1,49 @@
-import { useEffect, useState } from "react";
-import { loadClubs } from "../api/api";
-import Loading from "../components/Loading";
-import ErrorMessage from "../components/ErrorMessage";
+import { useCallback, useEffect, useState } from "react";
+
 import ClubCard from "../components/ClubCard";
 import SearchBar from "../components/SearchBar";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
+
+import { loadClubs } from "../api/api";
 
 function Clubs() {
   const [clubs, setClubs] = useState([]);
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState("all");
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchClubs() {
-      try {
-        setLoading(true);
-        setError("");
+  const fetchClubs = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
 
-        const data = await loadClubs();
+      const data = await loadClubs();
 
-        setClubs(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+      setClubs(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
-
-    fetchClubs();
   }, []);
 
-  // Create category list from the clubs data
-  const categories = ["All", ...new Set(clubs.map((club) => club.category))];
+  useEffect(() => {
+    fetchClubs();
+  }, [fetchClubs]);
 
-  // Filter clubs according to search and category
+  const categories = ["all", ...new Set(clubs.map((club) => club.category))];
+
   const filteredClubs = clubs.filter((club) => {
-    const searchTerm = search.toLowerCase();
+    const searchText = search.toLowerCase().trim();
 
     const matchesSearch =
-      club.name.toLowerCase().includes(searchTerm) ||
-      club.description.toLowerCase().includes(searchTerm) ||
-      club.category.toLowerCase().includes(searchTerm);
+      club.name.toLowerCase().includes(searchText) ||
+      club.description.toLowerCase().includes(searchText);
 
-    const matchesCategory = category === "All" || club.category === category;
+    const matchesCategory = category === "all" || club.category === category;
 
     return matchesSearch && matchesCategory;
   });
@@ -53,21 +53,23 @@ function Clubs() {
   }
 
   if (error) {
-    return <ErrorMessage message={error} />;
+    return (
+      <section className="page-section">
+        <ErrorMessage message={error} onRetry={fetchClubs} />
+      </section>
+    );
   }
 
   return (
-    <section className="page-section">
+    <main className="page-section">
       <div className="page-header">
         <h1>Campus Clubs</h1>
 
         <p>
-          Discover student communities, develop new skills, and connect with
-          people who share your interests.
+          Discover clubs, meet new people, and participate in campus activities.
         </p>
       </div>
 
-      {/* Search and filtering controls */}
       <div className="club-controls">
         <SearchBar
           value={search}
@@ -76,56 +78,41 @@ function Clubs() {
         />
 
         <div className="category-filter">
-          <label htmlFor="category">Category</label>
+          <label htmlFor="club-category">Category</label>
 
           <select
-            id="category"
+            id="club-category"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
           >
             {categories.map((item) => (
               <option key={item} value={item}>
-                {item}
+                {item === "all" ? "All Categories" : item}
               </option>
             ))}
           </select>
         </div>
       </div>
 
-      {/* Results count */}
-      <div className="results-info">
-        <p>
-          Showing <strong>{filteredClubs.length}</strong> of{" "}
-          <strong>{clubs.length}</strong> clubs
-        </p>
-      </div>
+      <p className="results-count">
+        Showing {filteredClubs.length}{" "}
+        {filteredClubs.length === 1 ? "club" : "clubs"}
+      </p>
 
-      {/* Club list */}
-      {filteredClubs.length > 0 ? (
-        <div className="club-list">
-          {filteredClubs.map((club) => (
-            <ClubCard
-              key={club.id}
-              id={club.id}
-              name={club.name}
-              description={club.description}
-              category={club.category}
-              image={club.image}
-              meetingDay={club.meetingDay}
-              meetingTime={club.meetingTime}
-              location={club.location}
-              members={club.members}
-            />
-          ))}
-        </div>
-      ) : (
+      {filteredClubs.length === 0 ? (
         <div className="empty-state">
           <h2>No clubs found</h2>
 
-          <p>Try a different search term or category.</p>
+          <p>Try changing your search or category filter.</p>
+        </div>
+      ) : (
+        <div className="club-list">
+          {filteredClubs.map((club) => (
+            <ClubCard key={club.id} {...club} />
+          ))}
         </div>
       )}
-    </section>
+    </main>
   );
 }
 

@@ -2571,3 +2571,597 @@ textarea {
     transform: none;
   }
 }
+/* ========================================
+   FAVORITE BUTTON
+======================================== */
+
+.favorite-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 180px;
+
+  padding: 12px 20px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #475569;
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.favorite-button:hover {
+  transform: translateY(-2px);
+
+  border-color: #2563eb;
+
+  color: #2563eb;
+
+  background: #eff6ff;
+}
+
+.favorite-button.favorited {
+  border-color: #2563eb;
+
+  background: #2563eb;
+
+  color: white;
+}
+
+.favorite-button.favorited:hover {
+  background: #1d4ed8;
+}
+
+.favorite-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   MOBILE FAVORITE BUTTON
+======================================== */
+
+@media (max-width: 767px) {
+  .favorite-button {
+    width: 100%;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .favorite-button {
+    transition: none;
+  }
+
+  .favorite-button:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   FAVORITES PAGE
+======================================== */
+
+.favorite-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 25px;
+}
+
+.favorite-card {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.05);
+}
+
+.favorite-card img {
+  width: 100%;
+
+  height: 220px;
+
+  object-fit: cover;
+}
+
+.favorite-card-content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px;
+}
+
+.favorite-card-content h2 {
+  margin: 8px 0 12px;
+
+  font-size: 1.3rem;
+}
+
+.favorite-card-content p {
+  margin: 0 0 20px;
+
+  color: #64748b;
+
+  line-height: 1.7;
+}
+
+.favorite-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: auto;
+}
+
+.remove-favorite-button {
+  padding: 10px 16px;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 7px;
+
+  background: white;
+
+  color: #dc2626;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.remove-favorite-button:hover {
+  background: #fef2f2;
+}
+
+.remove-favorite-button:focus-visible {
+  outline: 3px solid rgba(220, 38, 38, 0.2);
+
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+  .favorite-list {
+    grid-template-columns: 1fr;
+  }
+
+  .favorite-card img {
+    height: 200px;
+  }
+
+  .favorite-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .favorite-actions .details-button,
+  .remove-favorite-button {
+    width: 100%;
+
+    text-align: center;
+  }
+}
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error-message {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 30px;
+  text-align: center;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 14px;
+}
+
+.error-message h2 {
+  margin: 0 0 10px;
+  color: #c2410c;
+  font-size: 1.5rem;
+}
+
+.error-message p {
+  margin: 0;
+  color: #7c2d12;
+  line-height: 1.7;
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.retry-button {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.retry-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.retry-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading-container {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.loading-container p {
+  margin: 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.loading-spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: campus-spin 0.8s linear infinite;
+}
+
+@keyframes campus-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
+  }
+
+  .retry-button {
+    transition: none;
+  }
+
+  .retry-button:hover {
+    transform: none;
+  }
+}
+/* =========================================
+   REGISTRATION FORM
+========================================= */
+
+.registration-section {
+  margin-top: 40px;
+  padding: 30px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.registration-header {
+  margin-bottom: 25px;
+}
+
+.registration-header h2 {
+  margin: 0 0 8px;
+  color: #0f172a;
+}
+
+.registration-header p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
+
+.registration-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 18px 20px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-left: 5px solid #16a34a;
+  border-radius: 10px;
+}
+
+.success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: white;
+  font-weight: 800;
+}
+
+.registration-success strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #166534;
+}
+
+.registration-success p {
+  margin: 0;
+  color: #15803d;
+  line-height: 1.5;
+}
+
+.registration-success:focus {
+  outline: 3px solid rgba(22, 163, 74, 0.25);
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.required-mark {
+  margin-left: 4px;
+  color: #dc2626;
+}
+
+.form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #0f172a;
+  font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.15);
+}
+
+.form-group input[aria-invalid="true"] {
+  border-color: #dc2626;
+  background: #fffafa;
+}
+
+.form-group input[aria-invalid="true"]:focus {
+  border-color: #dc2626;
+  box-shadow:
+    0 0 0 3px
+    rgba(220, 38, 38, 0.12);
+}
+
+.form-group small {
+  color: #64748b;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   FIELD ERROR
+========================================= */
+
+.field-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.field-error::before {
+  content: "⚠ ";
+}
+
+
+/* =========================================
+   READ ONLY EVENT FIELD
+========================================= */
+
+.readonly-input {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   FORM BUTTONS
+========================================= */
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.register-button,
+.reset-button {
+  min-height: 46px;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.register-button {
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: white;
+}
+
+.register-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.reset-button {
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #475569;
+}
+
+.reset-button:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  transform: translateY(-2px);
+}
+
+.register-button:focus-visible,
+.reset-button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   MOBILE FORM
+========================================= */
+
+@media (max-width: 767px) {
+  .registration-section {
+    padding: 20px;
+  }
+
+  .registration-success {
+    padding: 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .register-button,
+  .reset-button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-group input,
+  .register-button,
+  .reset-button {
+    transition: none;
+  }
+
+  .register-button:hover,
+  .reset-button:hover {
+    transform: none;
+  }
+}

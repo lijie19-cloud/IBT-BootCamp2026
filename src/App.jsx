@@ -9,6 +9,7 @@ import EventDetails from "./pages/EventDetails";
 import Resources from "./pages/Resources";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Favorites from "./pages/favorites";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           {/* Clubs */}
           <Route path="clubs" element={<Clubs />} />
           <Route path="clubs/:id" element={<ClubDetails />} />
+
+          <Route path="favorites" element={<Favorites />} />
 
           {/* Events */}
           <Route path="events" element={<Events />} />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { loadResources } from "../api/api";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
@@ -31,6 +31,24 @@ function Resources() {
     fetchResources();
   }, []);
 
+    const fetchResources = useCallback(async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const data = await loadResources();
+
+        setResources(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }, []);
+    
+    useEffect(() => {
+      fetchResources();
+    }, [fetchResources]);
   // Create categories from the resource data
   const categories = [
     "All",
@@ -56,9 +74,13 @@ function Resources() {
     return <Loading message="Loading resources..." />;
   }
 
-  if (error) {
-    return <ErrorMessage message={error} />;
-  }
+if (error) {
+  return (
+    <section className="page-section">
+      <ErrorMessage message={error} onRetry={fetchResources} />
+    </section>
+  );
+}
 
   return (
     <section className="page-section">

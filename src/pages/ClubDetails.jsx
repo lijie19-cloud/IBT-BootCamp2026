@@ -1,67 +1,74 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { loadClubs } from "../api/api";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+import { useFavorites } from "../context/FavoritesContext";
 
 function ClubDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   const [club, setClub] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [joined, setJoined] = useState(false);
 
-  useEffect(() => {
-    async function fetchClub() {
-      try {
-        setLoading(true);
-        setError("");
-
-        const clubs = await loadClubs();
-
-        const selectedClub = clubs.find(
-          (club) => String(club.id) === String(id),
-        );
-
-        if (!selectedClub) {
-          setError("Club not found.");
-          setClub(null);
-          return;
-        }
-
-        setClub(selectedClub);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+  function handleFavorite() {
+    if (isFavorite(club.id)) {
+      removeFavorite(club.id);
+    } else {
+      addFavorite(club);
     }
+  }
 
-    fetchClub();
-  }, [id]);
+ const fetchClub = useCallback(async () => {
+   try {
+     setLoading(true);
+     setError("");
+
+     const clubs = await loadClubs();
+
+     const selectedClub = clubs.find((club) => String(club.id) === String(id));
+
+     if (!selectedClub) {
+       setError("Club not found.");
+       setClub(null);
+       return;
+     }
+
+     setClub(selectedClub);
+   } catch (error) {
+     setError(error.message);
+   } finally {
+     setLoading(false);
+   }
+ }, [id]);
+
+ useEffect(() => {
+   fetchClub();
+ }, [fetchClub]);
 
   if (loading) {
     return <Loading message="Loading club details..." />;
   }
 
-  if (error) {
-    return (
-      <section className="page-section">
-        <ErrorMessage message={error} />
+ if (error) {
+   return (
+     <section className="page-section">
+       <ErrorMessage message={error} onRetry={fetchClub} />
 
-        <button
-          type="button"
-          className="back-button"
-          onClick={() => navigate("/clubs")}
-        >
-          ← Back to Clubs
-        </button>
-      </section>
-    );
-  }
-
+       <button
+         type="button"
+         className="back-button"
+         onClick={() => navigate("/clubs")}
+       >
+         ← Back to Clubs
+       </button>
+     </section>
+   );
+ }
   if (!club) {
     return null;
   }
@@ -129,6 +136,16 @@ function ClubDetails() {
           <div className="club-actions">
             <button
               type="button"
+              className={`favorite-button ${
+                isFavorite(club.id) ? "favorited" : ""
+              }`}
+              onClick={handleFavorite}
+            >
+              {isFavorite(club.id) ? "★ Remove Favorite" : "☆ Add to Favorites"}
+            </button>
+
+            <button
+              type="button"
               className={`join-button ${joined ? "joined" : ""}`}
               onClick={handleJoin}
             >
@@ -143,7 +160,6 @@ function ClubDetails() {
               Back to Clubs
             </button>
           </div>
-
           {joined && (
             <div className="success-message" role="status">
               You have successfully joined <strong>{club.name}</strong>!

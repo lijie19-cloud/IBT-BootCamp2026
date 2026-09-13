@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { loadClubs, loadEvents, loadResources } from "../api/api";
@@ -17,43 +17,42 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchHomeData() {
-      try {
-        setLoading(true);
-        setError("");
+  const fetchHomeData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError("");
 
-        // Fetch all three datasets at the same time
-        const [clubsData, eventsData, resourcesData] = await Promise.all([
-          loadClubs(),
-          loadEvents(),
-          loadResources(),
-        ]);
+      const [clubsData, eventsData, resourcesData] = await Promise.all([
+        loadClubs(),
+        loadEvents(),
+        loadResources(),
+      ]);
 
-        setClubs(clubsData);
-        setEvents(eventsData);
-        setResources(resourcesData);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+      setClubs(clubsData);
+      setEvents(eventsData);
+      setResources(resourcesData);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
-
-    fetchHomeData();
   }, []);
+
+  useEffect(() => {
+    fetchHomeData();
+  }, [fetchHomeData]);
 
   if (loading) {
     return <Loading message="Loading CampusConnect..." />;
   }
 
-  if (error) {
-    return (
-      <section className="page-section">
-        <ErrorMessage message={error} />
-      </section>
-    );
-  }
+if (error) {
+  return (
+    <section className="page-section">
+      <ErrorMessage message={error} onRetry={fetchHomeData} />
+    </section>
+  );
+}
 
   // Show only a few items on the home page
   const featuredEvents = events.slice(0, 3);

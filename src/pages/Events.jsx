@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { loadEvents } from "../api/api";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
@@ -12,25 +12,24 @@ function Events() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchEvents() {
-      try {
-        setLoading(true);
-        setError("");
+const fetchEvents = useCallback(async () => {
+  try {
+    setLoading(true);
+    setError("");
 
-        const data = await loadEvents();
+    const data = await loadEvents();
 
-        setEvents(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
+    setEvents(data);
+  } catch (error) {
+    setError(error.message);
+  } finally {
+    setLoading(false);
+  }
+}, []);
 
-    fetchEvents();
-  }, []);
-
+useEffect(() => {
+  fetchEvents();
+}, [fetchEvents]);
   // Create categories dynamically from event data
   const categories = ["All", ...new Set(events.map((event) => event.category))];
 
@@ -53,10 +52,13 @@ function Events() {
     return <Loading message="Loading events..." />;
   }
 
-  if (error) {
-    return <ErrorMessage message={error} />;
-  }
-
+if (error) {
+  return (
+    <section className="page-section">
+      <ErrorMessage message={error} onRetry={fetchEvents} />
+    </section>
+  );
+}
   return (
     <section className="page-section">
       {/* Page heading */}

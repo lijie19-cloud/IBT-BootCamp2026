@@ -62,6 +62,14 @@ function Navbar() {
           </NavLink>
 
           <NavLink
+            to="/favorites"
+            className={getNavLinkClass}
+            onClick={closeMenu}
+          >
+            Favorites
+          </NavLink>
+
+          <NavLink
             to="/resources"
             className={getNavLinkClass}
             onClick={closeMenu}
