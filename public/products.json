@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "price": 2500,
+    "category": "Electronics",
+    "rating": 4.5,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrzvChSPso4xIfuHv9_RB3gfCHFKAeJjOfbQNe-8TphQ&s",
+    "description": "High-quality wireless headphones with comfortable ear cushions and clear sound."
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "price": 4500,
+    "category": "Electronics",
+    "rating": 4.7,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpmiiW9Dx_qF7RChvzRWcc4i_BuyKn-Z8B1r9gjSCOOw&s=10",
+    "description": "Modern smart watch with fitness tracking, notifications, and stylish design."
+  },
+  {
+    "id": 3,
+    "name": "Running Shoes",
+    "price": 3200,
+    "category": "Clothing",
+    "rating": 4.4,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuWDkHc-EKJ9niSvhUckyxBNDPnCecqSoxyewpBRsiag&s=10",
+    "description": "Comfortable running shoes designed for everyday exercise and active lifestyles."
+  },
+  {
+    "id": 4,
+    "name": "Classic T-Shirt",
+    "price": 900,
+    "category": "Clothing",
+    "rating": 4.2,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXpcFD0u1H-adMI4wtGuTgqP-uv_rFqQD9JeidfIT78g&s",
+    "description": "Simple and comfortable classic T-shirt suitable for everyday wear."
+  },
+  {
+    "id": 5,
+    "name": "Face Care Set",
+    "price": 1800,
+    "category": "Beauty",
+    "rating": 4.6,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnAV8jIxAWk20ku0RedXlAweaORMMWnNcvsgY1G_VJsQ&s=10",
+    "description": "Complete face care set for a fresh and healthy-looking skin routine."
+  },
+  {
+    "id": 6,
+    "name": "Coffee Maker",
+    "price": 3800,
+    "category": "Home",
+    "rating": 4.3,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREEJA8h3Xk-SHo5Eh8sh-uvkTjzZN3sBFBFaBSQLGHAQ&s=10",
+    "description": "Easy-to-use coffee maker for preparing delicious coffee at home."
+  },
+  {
+    "id": 7,
+    "name": "Leather Backpack",
+    "price": 2800,
+    "category": "Accessories",
+    "rating": 4.5,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLHimAf2U61iVXc_YW4u1DUe2QqA_c743N90NYA0PX2A&s",
+    "description": "Stylish and durable backpack suitable for work, school, and travel."
+  },
+  {
+    "id": 8,
+    "name": "Sunglasses",
+    "price": 1500,
+    "category": "Accessories",
+    "rating": 4.1,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNx-LvzOI0vO1oozUSuMGrtpQORRg4-tw0WM1DHQ9UpQ&s",
+    "description": "Modern sunglasses with a stylish frame for everyday use."
+  },
+  {
+    "id": 9,
+    "name": "Bluetooth Speaker",
+    "price": 2200,
+    "category": "Electronics",
+    "rating": 4.6,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT03921_rUckU3j3jBzIBdhu55MFcYh1wIB9VBVuYkypA&s=10",
+    "description": "Portable Bluetooth speaker with powerful sound and long battery life."
+  },
+  {
+    "id": 10,
+    "name": "Table Lamp",
+    "price": 1200,
+    "category": "Home",
+    "rating": 4.0,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgS-7DRKXcpcTl-BGuqZ_cObEIwIKwjnMWVANMRLwLcw&s=10",
+    "description": "Elegant table lamp that adds comfortable lighting to your home or office."
+  }
+]
