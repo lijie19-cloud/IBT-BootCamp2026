@@ -1515,3 +1515,867 @@ textarea {
     transform: none;
   }
 }
+/* ========================================
+   NAVBAR
+======================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-container {
+  width: min(1200px, 92%);
+  min-height: 72px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.navbar-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1e3a8a
+    );
+
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+}
+
+
+/* ========================================
+   DESKTOP NAVIGATION
+======================================== */
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  position: relative;
+
+  padding: 10px 14px;
+
+  color: #475569;
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  border-radius: 7px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+.nav-link.active {
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+
+/* ========================================
+   MOBILE MENU BUTTON
+======================================== */
+
+.mobile-menu-button {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 8px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+
+  background: white;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.mobile-menu-button span {
+  display: block;
+
+  width: 22px;
+  height: 2px;
+
+  background: #0f172a;
+
+  border-radius: 2px;
+}
+
+.mobile-menu-button:hover {
+  background: #f8fafc;
+}
+
+.mobile-menu-button:focus-visible,
+.nav-link:focus-visible,
+.navbar-logo:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   TABLET / MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+
+  .navbar-container {
+    min-height: 65px;
+    width: 90%;
+  }
+
+  .logo-text {
+    font-size: 1.05rem;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 0.75rem;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 12px 5% 18px;
+
+    background: white;
+
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 13px 15px;
+  }
+
+  .nav-link.active {
+    background: #eff6ff;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link {
+    transition: none;
+  }
+}
+/* ========================================
+   ABOUT PAGE
+======================================== */
+
+.about-page {
+  width: 100%;
+}
+
+
+/* ========================================
+   ABOUT HERO
+======================================== */
+
+.about-hero {
+  min-height: 430px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 70px 6%;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #1e3a8a,
+      #2563eb
+    );
+
+  color: white;
+}
+
+.about-hero-content {
+  max-width: 850px;
+}
+
+.about-hero .section-label {
+  color: #bfdbfe;
+}
+
+.about-hero h1 {
+  margin: 0 0 24px;
+
+  font-size: clamp(
+    2.5rem,
+    6vw,
+    4.5rem
+  );
+
+  line-height: 1.1;
+}
+
+.about-hero h1 span {
+  display: block;
+}
+
+.about-hero p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  opacity: 0.9;
+}
+
+
+/* ========================================
+   ABOUT SECTIONS
+======================================== */
+
+.about-section {
+  width: min(1100px, 92%);
+
+  margin: 0 auto;
+
+  padding: 80px 0;
+}
+
+.about-content-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.5fr)
+    minmax(300px, 1fr);
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+.about-content h2 {
+  margin: 0 0 20px;
+
+  font-size: clamp(
+    2rem,
+    4vw,
+    3rem
+  );
+
+  line-height: 1.2;
+}
+
+.about-content p {
+  margin-bottom: 18px;
+
+  color: #475569;
+
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   ABOUT HIGHLIGHT
+======================================== */
+
+.about-highlight {
+  padding: 40px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff6ff,
+      #dbeafe
+    );
+
+  border: 1px solid #bfdbfe;
+}
+
+.highlight-icon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1e3a8a
+    );
+
+  color: white;
+
+  font-weight: 800;
+}
+
+.about-highlight h3 {
+  margin: 0 0 15px;
+
+  font-size: 1.5rem;
+
+  line-height: 1.4;
+}
+
+.about-highlight p {
+  margin: 0;
+
+  color: #475569;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   SECTION HEADING
+======================================== */
+
+.about-section-heading {
+  max-width: 750px;
+
+  margin: 0 auto 45px;
+
+  text-align: center;
+}
+
+.about-section-heading h2 {
+  margin: 0 0 14px;
+
+  font-size: clamp(
+    2rem,
+    4vw,
+    3rem
+  );
+}
+
+.about-section-heading p {
+  margin: 0;
+
+  color: #64748b;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   MISSION
+======================================== */
+
+.mission-section {
+  width: 100%;
+  max-width: none;
+
+  padding-left: 4%;
+  padding-right: 4%;
+
+  background: #f8fafc;
+}
+
+.mission-grid {
+  width: min(1100px, 100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.mission-card {
+  padding: 30px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(0, 0, 0, 0.08);
+}
+
+.mission-number {
+  margin-bottom: 20px;
+
+  color: #2563eb;
+
+  font-size: 0.85rem;
+
+  font-weight: 800;
+}
+
+.mission-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 1.3rem;
+}
+
+.mission-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   STUDENT ACTIONS
+======================================== */
+
+.student-actions-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.student-action-card {
+  padding: 32px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.student-action-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(0, 0, 0, 0.08);
+}
+
+.action-icon {
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-size: 2.2rem;
+}
+
+.student-action-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 1.35rem;
+}
+
+.student-action-card p {
+  margin: 0 0 20px;
+
+  color: #64748b;
+
+  line-height: 1.7;
+}
+
+.student-action-card a {
+  color: #2563eb;
+
+  text-decoration: none;
+
+  font-weight: 700;
+}
+
+.student-action-card a:hover {
+  text-decoration: underline;
+}
+
+
+/* ========================================
+   BENEFITS
+======================================== */
+
+.benefits-section {
+  padding-top: 20px;
+}
+
+.benefits-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.benefit-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 18px;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+}
+
+.benefit-check {
+  flex-shrink: 0;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  font-weight: 800;
+}
+
+.benefit-item h3 {
+  margin: 0 0 6px;
+
+  font-size: 1.1rem;
+}
+
+.benefit-item p {
+  margin: 0;
+
+  color: #64748b;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   ABOUT CTA
+======================================== */
+
+.about-cta {
+  width: min(1100px, 92%);
+
+  margin: 0 auto 80px;
+
+  padding: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff6ff,
+      #dbeafe
+    );
+}
+
+.about-cta h2 {
+  max-width: 650px;
+
+  margin: 0 0 12px;
+
+  font-size: clamp(
+    1.8rem,
+    4vw,
+    2.7rem
+  );
+}
+
+.about-cta p {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #475569;
+
+  line-height: 1.7;
+}
+
+.about-cta-actions {
+  display: flex;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.about-cta-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 145px;
+
+  padding: 13px 20px;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.about-cta-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px
+    rgba(37, 99, 235, 0.25);
+}
+
+.about-cta-button.secondary {
+  background: white;
+
+  color: #2563eb;
+
+  border: 1px solid #bfdbfe;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+  .about-content-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+  }
+
+  .mission-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .student-actions-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 767px) {
+  .about-hero {
+    min-height: 400px;
+
+    padding: 60px 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .about-hero p {
+    font-size: 1rem;
+  }
+
+  .about-section {
+    width: 90%;
+
+    padding: 60px 0;
+  }
+
+  .about-content-grid {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .about-highlight {
+    padding: 30px;
+  }
+
+  .mission-section {
+    width: 100%;
+
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-list {
+    grid-template-columns: 1fr;
+  }
+
+  .about-cta {
+    width: 90%;
+
+    padding: 30px 24px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .about-cta-actions {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .about-cta-button {
+    width: 100%;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-card,
+  .student-action-card,
+  .about-cta-button {
+    transition: none;
+  }
+
+  .mission-card:hover,
+  .student-action-card:hover,
+  .about-cta-button:hover {
+    transform: none;
+  }
+}
