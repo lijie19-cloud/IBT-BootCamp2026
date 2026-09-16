@@ -9,6 +9,7 @@ The project demonstrates how React can be used to build a modern e-commerce appl
 ## 🌐 Live Demo
 
 👉 [Visit ShopSphere Online Shopping App](https://shopsphereonlineshopping-app.netlify.app/)
+Looms Demo Video: https://www.loom.com/share/ab3e9c7d21d944fc98886305befe167f
 
 ## 🖥️ Project Preview
 
