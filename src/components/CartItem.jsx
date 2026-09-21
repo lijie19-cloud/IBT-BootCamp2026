@@ -1,8 +1,6 @@
 import useCartStore from "../store/cartStore";
 
 function CartItem({ item }) {
-  // Narrow selector:
-  // Only subscribe to removeItem.
   const removeItem = useCartStore((state) => state.removeItem);
 
   const subtotal = item.price * item.quantity;
@@ -21,7 +19,11 @@ function CartItem({ item }) {
         <strong>Subtotal: {subtotal} ETB</strong>
       </div>
 
-      <button className="remove-button" onClick={() => removeItem(item.id)}>
+      <button
+        type="button"
+        className="remove-button"
+        onClick={() => removeItem(item.id)}
+      >
         Remove
       </button>
     </article>

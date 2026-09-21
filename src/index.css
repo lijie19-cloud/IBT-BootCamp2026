@@ -1510,3 +1510,405 @@ img {
 .dark .checkout-success {
   background: #1c3520;
 }
+/* =========================
+   CHECKOUT
+========================= */
+
+.checkout-page {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 3rem 0 5rem;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.checkout-form,
+.checkout-summary {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-form h2,
+.checkout-summary h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 3px solid rgba(180, 60, 40, 0.15);
+  border-color: #b43c28;
+}
+
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"] {
+  border-color: #c62828;
+}
+
+.optional {
+  font-weight: 400;
+  color: #777;
+}
+
+.field-error {
+  margin: 0;
+  color: #c62828;
+  font-size: 0.9rem;
+}
+
+.submit-error {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fff0f0;
+  border: 1px solid #e0aaaa;
+  color: #b71c1c;
+}
+
+.checkout-submit-button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 10px;
+  background: #b43c28;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkout-submit-button:hover {
+  opacity: 0.9;
+}
+
+.checkout-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkout-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.checkout-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.checkout-item span {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #ddd;
+  font-size: 1.2rem;
+}
+
+.dark .checkout-form,
+.dark .checkout-summary {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.dark .form-group input,
+.dark .form-group select,
+.dark .form-group textarea {
+  background: #292929;
+  color: #fff;
+  border-color: #555;
+}
+
+.dark .checkout-item {
+  border-color: #444;
+}
+
+.dark .checkout-total {
+  border-color: #555;
+}
+
+.dark .checkout-item span,
+.dark .optional {
+  color: #bbb;
+}
+
+/* =========================
+   CHECKOUT MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .checkout-page {
+    padding: 2rem 0 3rem;
+  }
+
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-form,
+  .checkout-summary {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================
+   RECEIPT PAGE
+========================= */
+
+.receipt-page {
+  width: min(750px, 92%);
+  margin: 0 auto;
+  padding: 3rem 0 5rem;
+}
+
+.receipt-card {
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* SUCCESS */
+
+.success-message {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.receipt-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.success-message h1 {
+  margin-bottom: 0.75rem;
+}
+
+.success-text {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ORDER ID */
+
+.order-confirmation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  background: #f4f7f5;
+}
+
+.order-confirmation span {
+  color: #666;
+}
+
+.order-confirmation strong {
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+/* SECTIONS */
+
+.receipt-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.receipt-section h2 {
+  margin-bottom: 1.25rem;
+}
+
+/* CUSTOMER ROWS */
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+}
+
+.receipt-row span {
+  color: #666;
+}
+
+.receipt-row strong {
+  text-align: right;
+}
+
+/* ITEMS */
+
+.receipt-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.receipt-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.receipt-item span {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* TOTAL */
+
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #ddd;
+  font-size: 1.2rem;
+}
+
+/* SUCCESS ALERT */
+
+.order-success-alert {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #eaf8ee;
+  border: 1px solid #a9d9b5;
+  color: #236b35;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ACTIONS */
+
+.receipt-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* DARK MODE */
+
+.dark .receipt-card {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.dark .success-text,
+.dark .receipt-row span,
+.dark .receipt-item span,
+.dark .order-confirmation span {
+  color: #bbb;
+}
+
+.dark .order-confirmation {
+  background: #292929;
+}
+
+.dark .receipt-section,
+.dark .receipt-item {
+  border-color: #444;
+}
+
+.dark .receipt-total {
+  border-color: #555;
+}
+
+.dark .order-success-alert {
+  background: #193b23;
+  border-color: #2f7140;
+  color: #b8e8c2;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .receipt-card {
+    padding: 1.5rem;
+  }
+
+  .order-confirmation,
+  .receipt-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .receipt-row strong {
+    text-align: left;
+  }
+
+  .receipt-actions {
+    flex-direction: column;
+  }
+
+  .receipt-actions a {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}

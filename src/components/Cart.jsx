@@ -4,21 +4,17 @@ import useCartStore from "../store/cartStore";
 import CartItem from "./CartItem";
 
 function Cart() {
-  // Narrow selector:
-  // This component subscribes only to items.
   const items = useCartStore((state) => state.items);
 
-  // Narrow selector:
-  // This component subscribes only to clear.
   const clear = useCartStore((state) => state.clear);
 
-  // Calculate cart total.
   const total = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
 
-  // Empty cart.
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
   if (items.length === 0) {
     return (
       <section className="cart-page">
@@ -41,19 +37,16 @@ function Cart() {
     <section className="cart-page">
       <div className="page-heading">
         <h1>Your Cart</h1>
-
         <p>Review your selected dishes.</p>
       </div>
 
       <div className="cart-layout">
-        {/* Cart Items */}
         <div className="cart-items">
           {items.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
         </div>
 
-        {/* Summary */}
         <aside className="cart-summary">
           <h2>Order Summary</h2>
 
@@ -64,9 +57,7 @@ function Cart() {
 
           <div className="summary-row">
             <span>Total Quantity</span>
-            <span>
-              {items.reduce((total, item) => total + item.quantity, 0)}
-            </span>
+            <span>{totalQuantity}</span>
           </div>
 
           <div className="summary-total">
@@ -78,7 +69,7 @@ function Cart() {
             Proceed to Checkout
           </Link>
 
-          <button className="clear-button" onClick={clear}>
+          <button type="button" className="clear-button" onClick={clear}>
             Clear Cart
           </button>
         </aside>

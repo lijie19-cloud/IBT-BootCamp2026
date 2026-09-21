@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Profiler } from "react";
+
 import ReactDOM from "react-dom/client";
 
 import { BrowserRouter } from "react-router-dom";
@@ -11,15 +12,31 @@ import { ThemeProvider } from "./context/ThemeContext";
 
 import "./index.css";
 
+function onRender(
+  id,
+  phase,
+  actualDuration,
+  baseDuration,
+  startTime,
+  commitTime,
+) {
+  console.log(`[Profiler] ${id}`, {
+    phase,
+    actualDuration,
+    baseDuration,
+    startTime,
+    commitTime,
+  });
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* Authentication Context */}
       <AuthProvider>
-        {/* Theme Context */}
         <ThemeProvider>
-          {/* Application */}
-          <App />
+          <Profiler id="AddisEatsApp" onRender={onRender}>
+            <App />
+          </Profiler>
         </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>

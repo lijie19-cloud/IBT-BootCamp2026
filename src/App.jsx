@@ -1,22 +1,32 @@
+import { lazy, Suspense } from "react";
+
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
+import LoadingSkeleton from "./components/LoadingSkeleton";
 
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import DishDetail from "./pages/DishDetail";
 import CartPage from "./pages/CartPage";
-import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+
+/*
+  Lazy-loaded routes.
+
+  These files are loaded only when their routes
+  are actually visited.
+*/
+const Checkout = lazy(() => import("./pages/Checkout"));
+
+const Receipt = lazy(() => import("./pages/Receipt"));
 
 function App() {
   return (
     <Routes>
-      {/* Shared Layout */}
       <Route path="/" element={<Layout />}>
-        {/* Public Routes */}
         <Route index element={<Home />} />
 
         <Route path="menu" element={<Menu />} />
@@ -27,12 +37,30 @@ function App() {
 
         <Route path="login" element={<Login />} />
 
-        {/* Protected Routes */}
         <Route element={<RequireAuth />}>
-          <Route path="checkout" element={<Checkout />} />
+          <Route
+            path="checkout"
+            element={
+              <Suspense
+                fallback={<LoadingSkeleton message="Loading checkout..." />}
+              >
+                <Checkout />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="receipt"
+            element={
+              <Suspense
+                fallback={<LoadingSkeleton message="Loading receipt..." />}
+              >
+                <Receipt />
+              </Suspense>
+            }
+          />
         </Route>
 
-        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
