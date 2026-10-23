@@ -1,0 +1,185 @@
+// Production database blueprint only. Prisma is intentionally not installed in the local demo yet.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  BUYER
+  SELLER
+  ADMIN
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  INACTIVE
+  SOLD_OUT
+  ARCHIVED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  FULFILLED
+}
+
+model User {
+  id             String         @id @default(cuid())
+  name           String
+  email          String         @unique
+  emailVerified  DateTime?
+  passwordHash   String?
+  role           UserRole
+  location       String?
+  products       Product[]
+  buyerChats     Conversation[] @relation("ConversationBuyer")
+  sellerChats    Conversation[] @relation("ConversationSeller")
+  messages       Message[]
+  cart           Cart?
+  wishlistItems  WishlistItem[]
+  orders         Order[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@index([role])
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id            String          @id @default(cuid())
+  sellerId      String
+  categoryId    String
+  name          String
+  description   String
+  price         Decimal         @db.Decimal(12, 2)
+  stock         Int
+  status        ProductStatus   @default(DRAFT)
+  imageUrl      String
+  seller        User            @relation(fields: [sellerId], references: [id], onDelete: Restrict)
+  category      Category        @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  conversations Conversation[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  orderItems    OrderItem[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@index([sellerId, status])
+  @@index([categoryId, status, createdAt])
+  @@index([status, createdAt])
+}
+
+model Conversation {
+  id        String    @id @default(cuid())
+  productId String
+  buyerId   String
+  sellerId  String
+  product   Product   @relation(fields: [productId], references: [id], onDelete: Restrict)
+  buyer     User      @relation("ConversationBuyer", fields: [buyerId], references: [id], onDelete: Restrict)
+  seller    User      @relation("ConversationSeller", fields: [sellerId], references: [id], onDelete: Restrict)
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([productId, buyerId])
+  @@index([buyerId, updatedAt])
+  @@index([sellerId, updatedAt])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  senderId       String
+  body           String       @db.VarChar(1000)
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Restrict)
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
+  @@index([senderId, createdAt])
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  cartId    String
+  productId String
+  quantity  Int
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId])
+  @@index([productId])
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([productId])
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  buyerId        String
+  idempotencyKey String      @unique
+  status         OrderStatus @default(PENDING)
+  total          Decimal     @db.Decimal(12, 2)
+  deliveryName   String
+  deliveryPhone  String
+  deliveryAddress String
+  deliveryCity   String
+  buyer          User        @relation(fields: [buyerId], references: [id], onDelete: Restrict)
+  items          OrderItem[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([buyerId, createdAt])
+  @@index([status, createdAt])
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  orderId    String
+  productId  String
+  sellerId   String
+  name       String
+  unitPrice  Decimal @db.Decimal(12, 2)
+  quantity   Int
+  order      Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product    Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+  @@index([sellerId])
+  @@index([productId])
+}
