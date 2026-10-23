@@ -4,12 +4,17 @@
 
 MarketHub is a responsive JavaScript-only marketplace portfolio application built with the Next.js App Router. It demonstrates a public catalog, mock buyer and seller accounts, seller product management, local buyer–seller messaging, cart and wishlist persistence, and a clearly simulated checkout. The project is intentionally database-free so its UI, architecture, validation, and security boundaries can be reviewed before a production backend is introduced.
 
-## Live URL
+## 🌐 Live URL
 
-**Not deployed yet.** No production URL or Git remote is currently configured in this checkout. After deployment, replace this line with the verified HTTPS URL and set `NEXT_PUBLIC_SITE_URL` to the same origin in the deployment environment.
+Visit the deployed application:
 
-Local development: `http://localhost:3000`
+ [Deployed-webApp](https://market-hub-neon.vercel.app/)
 
+## 🔗 Project Links
+
+- **Live Website:** [Market-Hub](https://market-hub-neon.vercel.app/)
+- **GitHub Repository:** [My git repository link
+](https://github.com/lijie19-cloud/IBT-BootCamp2026)
 ## Milestone status
 
 - [x] Milestone 1 — requirements, architecture, dependencies, and setup
