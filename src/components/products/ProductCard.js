@@ -8,7 +8,7 @@ export default function ProductCard({ product, categories }) {
   return (
     <article className="product-card">
       <Link className="product-image-link" href={`/products/${product.id}`} aria-label={`View ${product.name}`}>
-        <Image className="product-image" src={product.image} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" />
+        <Image className="product-image" src={product.image} alt="" fill unoptimized={product.image.startsWith("https://")} sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" />
         <span className={`stock-pill ${inStock ? "in-stock" : "out-of-stock"}`}>{inStock ? `${product.stock} available` : "Out of stock"}</span>
       </Link>
       <div className="product-card-body">

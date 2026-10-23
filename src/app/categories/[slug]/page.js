@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import EmptyState from "@/components/ui/EmptyState";
-import ProductGrid from "@/components/products/ProductGrid";
+import LocalAwareProductGrid from "@/components/products/LocalAwareProductGrid";
 import { getCatalog, getCategories, getCategory } from "@/lib/services/productService";
 
 export async function generateStaticParams() {
@@ -25,7 +24,7 @@ export default async function CategoryPage({ params }) {
   return (
     <main className="category-page">
       <section className="category-hero"><div className="category-hero-image"><Image src={category.image} alt="" fill priority sizes="(max-width: 520px) 100vw, 210px" /></div><div><p className="eyebrow">Product category</p><h1>{category.name}</h1><p>{category.description}</p><Link className="text-link" href="/products">Browse the complete catalog →</Link></div></section>
-      <section className="category-results"><div className="section-heading"><div><p className="eyebrow">Available now</p><h2>{catalog.pagination.totalItems} listings</h2></div></div>{catalog.products.length ? <ProductGrid products={catalog.products} categories={allCategories} /> : <EmptyState title="Nothing here yet" description="This category does not have an active demo listing right now." />}</section>
+      <section className="category-results"><div className="section-heading"><div><p className="eyebrow">Available now</p><h2>Listings in {category.name}</h2></div></div><LocalAwareProductGrid products={catalog.products} categories={allCategories} filters={{ ...catalog.filters, category: slug }} emptyTitle="Nothing here yet" emptyDescription="This category does not have an active demo listing right now." /></section>
     </main>
   );
 }

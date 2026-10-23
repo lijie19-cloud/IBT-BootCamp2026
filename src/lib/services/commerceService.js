@@ -1,5 +1,11 @@
 import { findProductById } from "@/lib/repositories/productRepository";
+import { findPublicSellerProductById } from "@/lib/repositories/sellerProductRepository";
 import { commerceRepository } from "@/lib/repositories/commerceRepository";
+
+async function findCatalogProductById(productId) {
+  const seededProduct = await findProductById(String(productId || ""));
+  return seededProduct || findPublicSellerProductById(productId);
+}
 
 function normalizeQuantity(value) {
   const quantity = Number(value);
@@ -10,7 +16,7 @@ export async function hydrateCart() {
   const stored = commerceRepository.readCart();
   const items = [];
   for (const entry of stored) {
-    const product = await findProductById(String(entry.productId || ""));
+    const product = await findCatalogProductById(entry.productId);
     const quantity = normalizeQuantity(entry.quantity);
     if (!product || product.status !== "active" || !quantity) continue;
     items.push({ product, quantity: Math.min(quantity, product.stock) });
@@ -29,7 +35,7 @@ export async function setCartQuantity(
   productId,
   requestedQuantity,
 ) {
-  const product = await findProductById(String(productId || ""));
+  const product = await findCatalogProductById(productId);
   const quantity = Number(requestedQuantity);
   if (!product || product.status !== "active")
     return { ok: false, error: "This product is no longer available." };
@@ -60,7 +66,7 @@ export async function addCartItem(currentItems, productId, amount = 1) {
 export async function hydrateWishlist() {
   const products = [];
   for (const id of commerceRepository.readWishlist()) {
-    const product = await findProductById(id);
+    const product = await findCatalogProductById(id);
     if (product?.status === "active") products.push(product);
   }
   commerceRepository.saveWishlist(products.map((product) => product.id));
@@ -76,7 +82,7 @@ export async function toggleWishlistProduct(currentProducts, productId) {
     commerceRepository.saveWishlist(products.map((product) => product.id));
     return { ok: true, products, saved: false };
   }
-  const product = await findProductById(String(productId || ""));
+  const product = await findCatalogProductById(productId);
   if (!product || product.status !== "active")
     return { ok: false, error: "This product is no longer available." };
   const products = [...currentProducts, product];

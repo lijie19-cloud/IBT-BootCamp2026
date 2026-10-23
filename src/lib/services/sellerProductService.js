@@ -34,6 +34,7 @@ export async function createSellerListing(user, values, categorySlugs) {
   const product = {
     ...data,
     id: `local-${window.crypto.randomUUID()}`,
+    source: "seller-created",
     featured: false,
     createdAt: now,
     updatedAt: now,

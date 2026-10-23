@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ProductGrid from "@/components/products/ProductGrid";
 import ContactSellerButton from "@/components/chat/ContactSellerButton";
 import ProductActions from "@/components/commerce/ProductActions";
+import LocalProductDetails from "@/components/products/LocalProductDetails";
 import { getCategories, getProduct, getProductIds, getRelatedProducts } from "@/lib/services/productService";
 import { categoryLabel, formatETB } from "@/lib/utils";
 
@@ -21,8 +22,10 @@ export async function generateMetadata({ params }) {
 export default async function ProductDetailsPage({ params }) {
   const { id } = await params;
   const product = await getProduct(id);
-  if (!product || product.status !== "active") notFound();
-  const [categories, related] = await Promise.all([getCategories(), getRelatedProducts(product)]);
+  const categories = await getCategories();
+  if (!product) return <LocalProductDetails productId={id} categories={categories} />;
+  if (product.status !== "active") notFound();
+  const related = await getRelatedProducts(product);
   const inStock = product.stock > 0;
 
   return (

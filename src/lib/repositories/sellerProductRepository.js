@@ -19,6 +19,11 @@ function readStore() {
 
 function writeStore(store) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+  window.dispatchEvent(new CustomEvent("markethub-products-changed"));
+}
+
+function cloneProduct(product) {
+  return { ...product, seller: { ...product.seller } };
 }
 
 function initialListings(user) {
@@ -38,7 +43,30 @@ export function findSellerProducts(user) {
     store[user.id] = initialListings(user);
     writeStore(store);
   }
-  return store[user.id].map((product) => ({ ...product, seller: { ...product.seller } }));
+  return store[user.id].map(cloneProduct);
+}
+
+// Only seller-created records join the public demo catalog. The demo seller's
+// starter records mirror seeded products and would otherwise appear twice.
+export function findPublicSellerProducts() {
+  const store = readStore();
+  return Object.values(store)
+    .flatMap((listings) => (Array.isArray(listings) ? listings : []))
+    .filter(
+      (product) =>
+        product?.status === "active" &&
+        (product.source === "seller-created" ||
+          String(product.id || "").startsWith("local-")),
+    )
+    .map(cloneProduct);
+}
+
+export function findPublicSellerProductById(productId) {
+  return (
+    findPublicSellerProducts().find(
+      (product) => product.id === String(productId || ""),
+    ) || null
+  );
 }
 
 export function findOwnedSellerProduct(user, productId) {

@@ -64,7 +64,7 @@ export async function startDemoConversation(user, product) {
     product: { id: product.id, name: product.name, image: product.image },
     participants: {
       buyer: { id: user.id, name: user.fullName },
-      seller: { id: "seller-demo", name: product.seller.name },
+      seller: { id: product.seller.id, name: product.seller.name },
     },
     updatedAt: now,
     messages: [],
