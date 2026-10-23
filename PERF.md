@@ -2,36 +2,46 @@
 
 ## Deployed-build results
 
-Performance must be recorded from the final HTTPS deployment, not from `next dev`, a cached localhost tab, or a different commit. This checkout currently has no configured Git remote or verified live URL, so deployed scores cannot be truthfully reported yet.
+Live deployment tested: <https://market-hub-neon.vercel.app/>
+
+These scores come from the deployed HTTPS home page, not `next dev` or localhost. Lighthouse 13.0.1 ran three uncached navigation audits per device profile on October 23, 2026; each value is the median of those three runs.
 
 | Lighthouse category | Mobile | Desktop |
 | --- | ---: | ---: |
-| Performance | Not measured—deployment pending | Not measured—deployment pending |
-| Accessibility | Not measured—deployment pending | Not measured—deployment pending |
-| Best Practices | Not measured—deployment pending | Not measured—deployment pending |
-| SEO | Not measured—deployment pending | Not measured—deployment pending |
+| Performance | 60 | 42 |
+| Accessibility | 96 | 96 |
+| Best Practices | 96 | 96 |
+| SEO | 100 | 100 |
+
+## Median lab metrics
+
+| Metric | Mobile | Desktop |
+| --- | ---: | ---: |
+| First Contentful Paint | 1.9 s | 1.8 s |
+| Largest Contentful Paint | 3.3 s | 2.7 s |
+| Total Blocking Time | 1,346 ms | 804 ms |
+| Cumulative Layout Shift | 0.000 | 0.000 |
+| Speed Index | 4.0 s | 3.9 s |
 
 ## Measurement record
 
 | Field | Value |
 | --- | --- |
-| Live URL | Not available |
-| Commit SHA | Not available—repository has no recorded remote/deployment |
-| Measurement date | Pending |
-| Tool | Chrome Lighthouse navigation report |
-| Pages | `/` and `/products` at minimum |
-| Runs | Three uncached runs per device profile; record the median |
+| Live URL | `https://market-hub-neon.vercel.app/` |
+| Commit SHA | Not asserted—the deployment does not expose a verified SHA to this checkout |
+| Measurement date | 2026-10-23 15:00–15:05 UTC |
+| Tool | Lighthouse 13.0.1, Navigation mode, headless Google Chrome |
+| Page | `/` |
+| Runs | Three mobile and three desktop runs; median reported |
 
-## How to fill both columns
+## Interpretation and next work
 
-1. Deploy the exact commit with `npm run build` as the build command.
-2. Verify the final HTTPS URL and set `NEXT_PUBLIC_SITE_URL` to that origin.
-3. Open the deployed home page in Chrome Incognito with extensions disabled.
-4. Run Lighthouse in **Navigation** mode with all four categories selected, first using **Mobile**, then **Desktop**.
-5. Repeat each profile three times with a cleared site cache. Record the median score in the table rather than selecting the best run.
-6. Repeat for `/products`; if it scores lower, record the lower representative result and note the route.
-7. Add the deployment URL, commit SHA, UTC timestamp, Chrome/Lighthouse version, and links or screenshots for the saved reports.
+SEO is excellent and accessibility has a strong baseline, but performance is not release-grade. Total Blocking Time is the largest measured weakness, so reducing client-side JavaScript and hydration work should come before cosmetic micro-optimizations. LCP is the next target, especially on mobile; prioritize the hero path, image delivery, and critical CSS.
 
-## Build evidence currently available
+The audits also identified insufficient color contrast, a visible-label/accessibility-name mismatch, and browser console errors. Those findings explain the 96 Accessibility and Best Practices scores and should be addressed before treating either category as complete.
 
-`npm run build` successfully generates all application routes. Browser checks confirm local images load, core pages avoid horizontal overflow at narrow widths, and no critical console errors remain. These are useful release checks, but they are not substitutes for deployed Lighthouse measurements.
+Scores vary with Lighthouse throttling, network conditions, and deployment cold starts. Using the median prevents one unusually fast or slow run from becoming the claim. Re-run the same six audits after performance work and attach the deployed commit SHA when Vercel/Git metadata is available.
+
+## Supporting build evidence
+
+`npm run build` successfully generates all application routes. That is useful release evidence, but it is separate from the deployed measurements above: build success proves compilation, while Lighthouse measures the delivered page under a simulated device and network profile.

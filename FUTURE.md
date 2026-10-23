@@ -20,11 +20,11 @@ These capabilities were cut from the portfolio release intentionally. The decisi
 
 **Why:** Realtime transport is the easy part; participant authorization, retention, abuse prevention, blocking/reporting, offline delivery, and privacy are the real product. Local conversations demonstrate the interface and participant policy while keeping the limitation explicit.
 
-## Seller uploads and public publishing
+## Cross-device catalog publishing and uploads
 
-**Cut:** Direct file upload, image processing, CDN delivery, and immediate publication of browser-created listings to the public catalog.
+**Cut:** Database-backed public listings, direct file uploads, image processing, CDN delivery, and moderation before publication.
 
-**Why:** Safe uploads need authenticated signed requests, MIME and decoded-file validation, size/dimension limits, malware controls, generated object names, lifecycle rules, and moderation. Local preview URLs are enough to validate the product form without building an unsafe upload path.
+**Why:** Seller-created listings now join the catalog in the same browser, which is enough to prove the create-to-discovery workflow. Sharing them between users requires authenticated writes and durable storage. Safe media also needs signed requests, MIME and decoded-file validation, size/dimension limits, malware controls, generated object names, lifecycle rules, and moderation; an arbitrary upload endpoint would be a security regression.
 
 ## Search infrastructure
 
@@ -44,11 +44,11 @@ These capabilities were cut from the portfolio release intentionally. The decisi
 
 **Why:** The current unit tests target the deterministic validation and authorization policy available today. Backend and deployed-environment tests should be added alongside the systems they can genuinely verify, not as mocks that overstate coverage.
 
-## Measured deployed performance
+## Performance optimization and continuous evidence
 
-**Cut:** Final mobile and desktop Lighthouse claims.
+**Cut:** A claim that the current deployed build is already performance-complete, plus continuous Lighthouse budgets in CI.
 
-**Why:** There is no verified deployment URL in this checkout. `PERF.md` intentionally leaves both columns unscored until measurements can be tied to a live URL and commit. This avoids presenting localhost or development-mode numbers as production evidence.
+**Why:** `PERF.md` now records six Lighthouse runs against the live Vercel URL. The median scores expose substantial blocking time and weaker-than-target performance, so the honest next step is reducing hydration and client JavaScript, improving the LCP path, fixing audit findings, and then enforcing budgets against a verified deployment commit—not polishing away the evidence.
 
 ## Recommended order
 
@@ -59,3 +59,5 @@ These capabilities were cut from the portfolio release intentionally. The decisi
 5. Transactional inventory and payment-provider integration.
 6. Realtime messaging, moderation, and operational tooling.
 7. Deployed E2E, security, accessibility, load, and performance evidence.
+
+The judgment is deliberate: deepen the trust boundary first, then add money, media, realtime behavior, and operations. That order turns the demo into a marketplace instead of merely adding more screens.
